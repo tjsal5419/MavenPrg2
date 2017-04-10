@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,16 +38,20 @@ public class CustomerController {
 	@Autowired
 	private NoticeFileDao noticeFileDao;
 	
+	@Autowired
+	private SqlSession sqlSession;
+	
 	@RequestMapping("notice")	
 	/*@ResponseBody*/
 	public String notice(
-			@RequestParam(value="p", defaultValue="1")String page, 
+			@RequestParam(value="p", defaultValue="1")Integer page, 
 			@RequestParam(value="f", defaultValue="TITLE")String field, 
 			@RequestParam(value="q", defaultValue="")String query, Model model){
 		
 		//return String.format("page:%s, field:%s, query:%s\n", page,field,query);
 		
-		List<NoticeView> list = noticeDao.getList();
+		//List<NoticeView> list = noticeDao.getList();
+		List<NoticeView> list = sqlSession.getMapper(NoticeDao.class).getList(page,field,query);
 		model.addAttribute("list", list);
 		
 		//return "/WEB-INF/views/customer/notice.jsp";		

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.newlecture.web.dao.NoticeDao">
+	<select id="lastCode" resultType="String">
+		SELECT MAX(CAST(CODE AS UNSIGNED)) CODE 
+		FROM NOTICE
+	</select>
+	<select id="get" resultType="com.newlecture.web.entity.NoticeView" >
+		SELECT * 
+		FROM NOTICE_VIEW 
+		WHERE CODE=#{code}
+	</select>
+	<select id="getPrev" resultType="com.newlecture.web.entity.NoticeView" >
+		SELECT * 
+		FROM NOTICE_VIEW 
+		WHERE CAST(CODE AS unsigned) &lt; CAST(#{code} AS unsigned) ORDER BY REGDATE DESC LIMIT 0, 1
+	</select>
+	<select id="getNext" resultType="com.newlecture.web.entity.NoticeView" >
+		SELECT * 
+		FROM NOTICE_VIEW 
+		WHERE CAST(CODE AS unsigned) &gt; CAST(#{code} AS unsigned) ORDER BY REGDATE ASC LIMIT 0, 1
+	</select>
+	<select id="getList" resultType="com.newlecture.web.entity.NoticeView" >
+		SELECT * 
+		FROM NOTICE_VIEW 
+		WHERE BINARY ${param2} LIKE '%${param3}%' 
+		LIMIT  ${(param1-1)*10},10
+	</select>
+	<select id="getSize" resultType="Integer" >
+		SELECT COUNT(CODE) SIZE 
+		FROM NOTICE 
+		WHERE BINARY ${param1} LIKE '%${param2}%'
+	</select>
+	
+	<delete id="delete">
+		DELETE FROM NOTICE WHERE CODE=#{code}
+	</delete>
+	
+	<update id="update">
+		UPDATE NOTICE 
+		SET TITLE = #{title}
+			, CONTENT = #{content} 
+		WHERE CODE = #{code}
+	</update>
+	
+</mapper>
