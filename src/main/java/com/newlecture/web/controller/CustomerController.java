@@ -61,7 +61,9 @@ public class CustomerController {
 	@RequestMapping("notice-detail")
 	public String noticeDetail(@RequestParam("c") String code, Model model){
 		
-		model.addAttribute("n", noticeDao.get(code));
+		//model.addAttribute("n", noticeDao.get(code));
+		model.addAttribute("n", 
+				sqlSession.getMapper(NoticeDao.class).get(code));
 		
 		//return "/WEB-INF/views/customer/notice-detail.jsp";
 		return "customer.notice-detail";

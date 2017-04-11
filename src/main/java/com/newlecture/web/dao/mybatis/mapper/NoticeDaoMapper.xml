@@ -8,11 +8,11 @@
 		SELECT MAX(CAST(CODE AS UNSIGNED)) CODE 
 		FROM NOTICE
 	</select>
-	<select id="get" resultType="com.newlecture.web.entity.NoticeView" >
+	<!-- <select id="get" resultType="com.newlecture.web.entity.NoticeView" >
 		SELECT * 
 		FROM NOTICE_VIEW 
 		WHERE CODE=#{code}
-	</select>
+	</select> -->
 	<select id="getPrev" resultType="com.newlecture.web.entity.NoticeView" >
 		SELECT * 
 		FROM NOTICE_VIEW 
@@ -26,14 +26,34 @@
 	<select id="getList" resultType="com.newlecture.web.entity.NoticeView" >
 		SELECT * 
 		FROM NOTICE_VIEW 
-		WHERE BINARY ${param2} LIKE '%${param3}%' 
-		LIMIT  ${(param1-1)*10},10
+		WHERE BINARY ${field} LIKE '%${query}%' 
+		LIMIT  ${(page-1)*10},10
 	</select>
 	<select id="getSize" resultType="Integer" >
 		SELECT COUNT(CODE) SIZE 
 		FROM NOTICE 
 		WHERE BINARY ${param1} LIKE '%${param2}%'
 	</select>
+	
+	<!-- <insert id="add">
+		<selectKey order="BEFORE" keyProperty="code" resultType="String">
+			SELECT MAX(CAST(CODE AS UNSIGNED))+1 CODE FROM NOTICE
+		</selectKey>
+		
+		INSERT INTO NOTICE(
+			CODE,
+			TITLE,
+			WRITER,
+			CONTENT
+		) 
+		VALUES(
+			#{code},
+			#{title},
+			#{writer},
+			#{content}
+		)
+		
+	</insert> -->
 	
 	<delete id="delete">
 		DELETE FROM NOTICE WHERE CODE=#{code}
