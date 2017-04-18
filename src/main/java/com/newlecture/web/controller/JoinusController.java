@@ -32,7 +32,7 @@ public class JoinusController {
 		
 		String memberId = principal.getName();
 		
-		String role = memberRoleDao.getDefaultRoleById(memberId);
+		String role = "ROLE_TEACHER";//memberRoleDao.getDefaultRoleById(memberId);
 		
 		if(role.equals("ROLE_ADMIN"))
 			return "redirect:../admin/index";
