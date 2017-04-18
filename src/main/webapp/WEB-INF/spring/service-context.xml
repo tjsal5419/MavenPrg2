@@ -26,7 +26,7 @@
 
 	<bean class="com.newlecture.web.dao.mybatis.MyBatisLanguageDao" />
 	<bean class="com.newlecture.web.dao.mybatis.MybatisLanguageVerDao" />
-	<bean class="com.newlecture.web.dao.mybatis.MyBatisLectureDao" />
+	<bean id="lectureDao" class="com.newlecture.web.dao.mybatis.MyBatisLectureDao" />
 	<bean class="com.newlecture.web.dao.mybatis.MyBatisLectureLanguageDao" />
 	<bean class="com.newlecture.web.dao.mybatis.MyBatisLecturePlatformDao" />
 	<bean class="com.newlecture.web.dao.mybatis.MyBatisLevelDao" />
@@ -36,6 +36,9 @@
 	<bean class="com.newlecture.web.dao.mybatis.MyBatisNoticeFileDao" />
 	<bean class="com.newlecture.web.dao.mybatis.MyBatisPlatformDao" />
 	<bean class="com.newlecture.web.dao.mybatis.MyBatisPlatformVerDao" />
+	
+	<bean class="com.newlecture.web.service.AdminService" />
+	<bean class="com.newlecture.web.service.TeacherService" />
 	
 	
 </beans>
