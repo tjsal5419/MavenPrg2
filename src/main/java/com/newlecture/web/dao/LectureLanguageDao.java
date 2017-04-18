@@ -6,9 +6,8 @@ import com.newlecture.web.entity.LectureLanguage;
 
 
 public interface LectureLanguageDao {
-	List<LectureLanguage> getList();
-	List<LectureLanguage> getList(int page);
-	List<LectureLanguage> getList(int page, String field, String query);	
+	
+	List<LectureLanguage> getList(String lectureCode);
 	LectureLanguage get(String code);
 	
 	int add(LectureLanguage lectureLanguage);

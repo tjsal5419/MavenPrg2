@@ -1,5 +1,7 @@
 package com.newlecture.web.entity;
 
+import java.util.List;
+
 public class Lecture {
 	
 	private String code;
@@ -12,7 +14,11 @@ public class Lecture {
 	private String impactContext;
 	private String levelCode;
 	private String memberId;
-	
+	//°ü°è entity
+	private List<LecturePlatform> platforms;
+	private List<LectureLanguage> languages;
+	private Level level;
+	private Member member;	
 	
 	public String getCode() {
 		return code;
@@ -73,6 +79,31 @@ public class Lecture {
 	}
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
+	}
+	
+	public List<LecturePlatform> getPlatforms() {
+		return platforms;
+	}
+	public void setPlatforms(List<LecturePlatform> platforms) {
+		this.platforms = platforms;
+	}
+	public List<LectureLanguage> getLanguages() {
+		return languages;
+	}
+	public void setLanguages(List<LectureLanguage> languages) {
+		this.languages = languages;
+	}
+	public Level getLevel() {
+		return level;
+	}
+	public void setLevel(Level level) {
+		this.level = level;
+	}
+	public Member getMember() {
+		return member;
+	}
+	public void setMember(Member member) {
+		this.member = member;
 	}
 	
 	

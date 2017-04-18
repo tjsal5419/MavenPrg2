@@ -7,12 +7,8 @@
 <mapper namespace="com.newlecture.web.dao.LectureLanguageDao.xml">
    
    <select id="getList" resultType="com.newlecture.web.entity.LectureLanguage">
-      SELECT `LECTURE_LANGUAGE`.`CODE`,
-          `LECTURE_LANGUAGE`.`VER_CODE`,
-          `LECTURE_LANGUAGE`.`LECTURE_CODE`,
-          `LECTURE_LANGUAGE`.`LANGUAGE_VER_CODE`
-      FROM `newlecture`.`LECTURE_LANGUAGE`
-
+      	SELECT * FROM LECTURE_LANGUAGE
+		WHERE LECTURE_CODE = #{lectureCode}
    </select>
    
     <insert id="add" parameterType="com.newlecture.web.entity.LectureLanguage">
