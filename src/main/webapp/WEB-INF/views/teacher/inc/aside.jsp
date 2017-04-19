@@ -23,12 +23,12 @@
 					</ul>
 				</nav>
 				<nav>
-					<h1>수강관리</h1>					
+					<h1>콘텐츠 관리</h1>					
 					<ul>
 						<li class="aside-menu-item"><a class="aside-menu-item-link"
-							href="">입금확인 대기자</a></li>
+							href="lecture">강좌 관리</a></li>
 						<li class="aside-menu-item"><a class="aside-menu-item-link"
-							href="">입금확인된 목록</a></li>
+							href="">문제 관리</a></li>
 						<li class="aside-menu-item"><a class="aside-menu-item-link"
 							href=""></a></li>
 					</ul>

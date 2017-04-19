@@ -12,11 +12,16 @@ public class Lecture {
 	private String bookImg;
 	private String target;
 	private String impactContext;
+	
+	//Not Null
 	private String levelCode;
 	private String memberId;
+	
 	//관계 entity
 	private List<LecturePlatform> platforms;
 	private List<LectureLanguage> languages;
+	
+	//부모 관계 entity
 	private Level level;
 	private Member member;	
 	

@@ -30,7 +30,7 @@ public class TeacherController {
 		
 		LectureModel m = service.getLectureModel(page, field, query);
 		model.addAttribute("model", m);
-		
+				
 		return "teacher.lecture";
 	}
 	

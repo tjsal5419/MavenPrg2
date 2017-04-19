@@ -52,18 +52,16 @@ public class MyBatisNoticeDao implements NoticeDao {
 
    @Override
    public List<NoticeView> getList() {
-      NoticeDao noticeDao;
-      noticeDao = sqlSession.getMapper(NoticeDao.class);
+    
       
-      return noticeDao.getList(1,"TITLE","");
+      return getList(1,"TITLE","");
    }
 
    @Override
    public List<NoticeView> getList(int page) {
-      NoticeDao noticeDao;
-      noticeDao = sqlSession.getMapper(NoticeDao.class);
       
-      return noticeDao.getList(page,"TITLE","");
+      
+      return getList(page,"TITLE","");
    }
 
    @Override
@@ -76,10 +74,9 @@ public class MyBatisNoticeDao implements NoticeDao {
 
    @Override
    public int getSize() {
-      NoticeDao noticeDao;
-      noticeDao = sqlSession.getMapper(NoticeDao.class);
+    
       
-      return noticeDao.getSize();
+      return getSize();
    }
 
    @Override
@@ -92,10 +89,9 @@ public class MyBatisNoticeDao implements NoticeDao {
 
    @Override
    public int add(Notice notice) {
-      NoticeDao noticeDao;
-      noticeDao = sqlSession.getMapper(NoticeDao.class);
+     
       
-      return noticeDao.add(notice);
+      return add(notice);
    }
 
    @Override

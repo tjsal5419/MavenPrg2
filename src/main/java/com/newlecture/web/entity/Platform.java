@@ -4,6 +4,7 @@ public class Platform {
 
 	private String code;
 	private String name;
+	private String version;
 	
 	public String getCode() {
 		return code;
@@ -19,6 +20,14 @@ public class Platform {
 	
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
 	}
 	
 }

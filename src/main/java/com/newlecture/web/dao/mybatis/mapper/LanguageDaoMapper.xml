@@ -7,13 +7,16 @@
 <mapper namespace="com.newlecture.web.dao.LanguageDao">
 	<select id="getList" resultType="com.newlecture.web.entity.Language">
 		SELECT `LANGUAGE`.`CODE`,
-		`LANGUAGE`.`NAME`
+		    `LANGUAGE`.`NAME`,
+		    `LANGUAGE`.`VERSION`
 		FROM `newlecture`.`LANGUAGE`
 	</select>
 	<select id="get" resultType="com.newlecture.web.entity.Language">
 		SELECT `LANGUAGE`.`CODE`,
-		`LANGUAGE`.`NAME`
-		FROM `newlecture`.`LANGUAGE` WHERE CODE=#{code}
+		    `LANGUAGE`.`NAME`,
+		    `LANGUAGE`.`VERSION`
+		FROM `newlecture`.`LANGUAGE`
+		WHERE CODE=#{code}
 	</select>
 
 
@@ -24,12 +27,14 @@
 		INSERT INTO `newlecture`.`LANGUAGE`
 		(
 			`CODE`,
-			`NAME`
+			`NAME`,
+			`VERSION`
 		)
 		VALUES
 		( 
 			#{code},
-			#{name}
+			#{name},
+			#{version}
 		)
 	</insert>
 
@@ -37,6 +42,7 @@
 		UPDATE `newlecture`.`LANGUAGE`
 		SET
 			`NAME` = #{name}
+			`VERSION` = #{version}
 		WHERE `CODE` = #{code}
 	</update>
 

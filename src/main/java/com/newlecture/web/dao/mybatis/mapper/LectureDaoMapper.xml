@@ -3,59 +3,61 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newlecture.web.dao.LectureDao">
-	<select id="getList" resultType="com.newlecture.web.entity.Lecture">
-		SELECT `LECTURE`.`CODE`,
-		`LECTURE`.`TITLE`,
-		`LECTURE`.`CONTEXT`,
-		`LECTURE`.`TEACHER_NAME`,
-		`LECTURE`.`BOOK_NAME`,
-		`LECTURE`.`BOOK_IMG`,
-		`LECTURE`.`TARGET`,
-		`LECTURE`.`IMPACT_CONTEXT`,
-		`LECTURE`.`MEMBER_ID`,
-		`LECTURE`.`LEVEL_CODE`
-		FROM `newlecture`.`LECTURE`
-		WHERE ${param2} LIKE '%${param3}%'
-	</select>
 
-	<insert id="add" parameterType="com.newlecture.web.entity.Lecture">
-		<selectKey order="BEFORE" keyProperty="code" resultType="String">
-			select max(cast(code as unsigned))+1 CODE from `newlecture`.`LECTURE`
-		</selectKey>
-		INSERT INTO `newlecture`.`LECTURE`
-		(`CODE`,
-		`TITLE`,
-		`CONTEXT`,
-		`TEACHER_NAME`,
-		`BOOK_NAME`,
-		`BOOK_IMG`,
-		`TARGET`,
-		`IMPACT_CONTEXT`,
-		`MEMBER_ID`,
-		`LEVEL_CODE`)
-		VALUES
-		(#{code},
-		#{title},
-		#{context},
-		#{teacherName},
-		#{bookName},
-		#{bookImg},
-		#{target},
-		#{impactContext},
-		#{memberId},
-		#{levelCode})
-	</insert>
+   <select id="getList" resultType="com.newlecture.web.entity.Lecture">
+      SELECT `LECTURE`.`CODE`,
+      `LECTURE`.`TITLE`,
+      `LECTURE`.`CONTEXT`,
+      `LECTURE`.`TEACHER_NAME`,
+      `LECTURE`.`BOOK_NAME`,
+      `LECTURE`.`BOOK_IMG`,
+      `LECTURE`.`TARGET`,
+      `LECTURE`.`IMPACT_CONTEXT`,
+      `LECTURE`.`MEMBER_ID`,
+      `LECTURE`.`LEVEL_CODE`
+      FROM `newlecture`.`LECTURE`
+      WHERE BINARY ${param2} LIKE '%${param3}%'
+   </select>
+
+	<select id="getSize" resultType="Integer" >
+		SELECT COUNT(CODE) SIZE 
+		FROM LECTURE 
+		WHERE BINARY ${param1} LIKE '%${param2}%'
+	</select>
+	
+   <insert id="add" parameterType="com.newlecture.web.entity.Lecture">
+      <selectKey order="BEFORE" keyProperty="code" resultType="String">
+         select max(cast(code as unsigned))+1 CODE from `newlecture`.`LECTURE`
+      </selectKey>
+         INSERT INTO `newlecture`.`LECTURE`
+         (`CODE`,
+         `TITLE`,
+         `CONTEXT`,
+         `TEACHER_NAME`,
+         `BOOK_NAME`,
+         `BOOK_IMG`,
+         `TARGET`,
+         `IMPACT_CONTEXT`,
+         `MEMBER_ID`,
+         `LEVEL_CODE`)
+         VALUES
+         (#{code},
+         #{title},
+         #{context},
+         #{teacherName},
+         #{bookName},
+         #{bookImg},
+         #{target},
+         #{impactContext},
+         #{memberId},
+         #{levelCode})
+   </insert>
+
 
 	<select id="get" resultType="com.newlecture.web.entity.Lecture">
 		SELECT *
 		FROM `newlecture`.`LECTURE` WHERE
 		CODE=#{code}
-	</select>
-
-	<select id="getSize" resultType="Integer">
-		SELECT COUNT(CODE) 
-		FROM LECTURE
-		WHERE ${param1} LIKE '%${param2}%'
 	</select>
 
 	<delete id="delete">

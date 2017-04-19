@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
     	http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<bean name="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -24,9 +27,8 @@
 			value="classpath:com/newlecture/web/dao/mybatis/mapper/*.xml" />
 	</bean>
 
-	<bean class="com.newlecture.web.dao.mybatis.MyBatisLanguageDao" />
-	<bean class="com.newlecture.web.dao.mybatis.MybatisLanguageVerDao" />
-	<bean id="lectureDao" class="com.newlecture.web.dao.mybatis.MyBatisLectureDao" />
+	<bean class="com.newlecture.web.dao.mybatis.MyBatisLanguageDao" />	
+	<bean class="com.newlecture.web.dao.mybatis.MyBatisLectureDao" />
 	<bean class="com.newlecture.web.dao.mybatis.MyBatisLectureLanguageDao" />
 	<bean class="com.newlecture.web.dao.mybatis.MyBatisLecturePlatformDao" />
 	<bean class="com.newlecture.web.dao.mybatis.MyBatisLevelDao" />
@@ -34,9 +36,9 @@
 	<bean class="com.newlecture.web.dao.mybatis.MyBatisMemberRoleDao" />
 	<bean class="com.newlecture.web.dao.mybatis.MyBatisNoticeDao" />
 	<bean class="com.newlecture.web.dao.mybatis.MyBatisNoticeFileDao" />
-	<bean class="com.newlecture.web.dao.mybatis.MyBatisPlatformDao" />
-	<bean class="com.newlecture.web.dao.mybatis.MyBatisPlatformVerDao" />
+	<bean class="com.newlecture.web.dao.mybatis.MyBatisPlatformDao" />	
 	
+	<context:annotation-config /><!-- Autowired가 필요한 곳에서 설정함 -->
 	<bean class="com.newlecture.web.service.AdminService" />
 	<bean class="com.newlecture.web.service.TeacherService" />
 	

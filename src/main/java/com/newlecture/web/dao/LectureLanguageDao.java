@@ -6,11 +6,13 @@ import com.newlecture.web.entity.LectureLanguage;
 
 
 public interface LectureLanguageDao {
-	
+
+	//List<LectureLanguage> getList();
 	List<LectureLanguage> getList(String lectureCode);
-	LectureLanguage get(String code);
+
+	LectureLanguage get(String lectureCode, String languageCode);
 	
 	int add(LectureLanguage lectureLanguage);
 	int update(LectureLanguage lectureLanguage);
-	int delete(String code);
+	int delete(String lectureCode, String languageCode);
 }

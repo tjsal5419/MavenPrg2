@@ -10,9 +10,11 @@ public interface LectureDao {
 	List<Lecture> getList(int page);
 	List<Lecture> getList();	
 	Lecture get(String code);
+
 	int getSize(String field, String query);
+
 	int add(Lecture lecture);
-	int	 update(Lecture lecture);
+	int	update(Lecture lecture);
 	int delete(String code);
 	
 }

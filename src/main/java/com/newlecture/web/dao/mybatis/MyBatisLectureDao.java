@@ -9,63 +9,61 @@ import com.newlecture.web.dao.LectureDao;
 import com.newlecture.web.entity.Lecture;
 
 public class MyBatisLectureDao implements LectureDao {
+   
+   @Autowired
+   private SqlSession sqlSession;
 
-	@Autowired
-	private SqlSession sqlSession;
+   @Override
+   public List<Lecture> getList(int page, String field, String query) {
+      LectureDao lectureDao;
+      lectureDao = sqlSession.getMapper(LectureDao.class);
+      return lectureDao.getList(page, field, query);
+   }
 
-	@Override
-	public List<Lecture> getList(int page, String field, String query) {
-		LectureDao lectureDao;
-		lectureDao = sqlSession.getMapper(LectureDao.class);
-		return lectureDao.getList(page, field, query);
-	}
+   @Override
+   public List<Lecture> getList(int page) {
+      
+      return getList(page, "TITLE", "");
+   }
 
-	@Override
-	public List<Lecture> getList(int page) {
-		LectureDao lectureDao;
-		lectureDao = sqlSession.getMapper(LectureDao.class);
-		return lectureDao.getList(page, "TITLE", "");
-	}
+   @Override
+   public List<Lecture> getList() {
+      
+      return getList(1, "TITLE", "");
+   }
 
-	@Override
-	public List<Lecture> getList() {
-		LectureDao lectureDao;
-		lectureDao = sqlSession.getMapper(LectureDao.class);
-		return lectureDao.getList(1, "TITLE", "");
-	}
+   @Override
+   public Lecture get(String code) {
+      LectureDao lectureDao;
+      lectureDao = sqlSession.getMapper(LectureDao.class);
+      return lectureDao.get(code);
+   }
 
-	@Override
-	public Lecture get(String code) {
-		LectureDao lectureDao;
-		lectureDao = sqlSession.getMapper(LectureDao.class);
-		return lectureDao.get(code);
-	}
+   @Override
+   public int add(Lecture lecture) {
+      LectureDao lectureDao;
+      lectureDao = sqlSession.getMapper(LectureDao.class);
+      return lectureDao.add(lecture);
+   }
 
-	@Override
-	public int add(Lecture lecture) {
-		LectureDao lectureDao;
-		lectureDao = sqlSession.getMapper(LectureDao.class);
-		return lectureDao.add(lecture);
-	}
+   @Override
+   public int update(Lecture lecture) {
+      LectureDao lectureDao;
+      lectureDao = sqlSession.getMapper(LectureDao.class);
+      return lectureDao.update(lecture);
+   }
 
-	@Override
-	public int update(Lecture lecture) {
-		LectureDao lectureDao;
-		lectureDao = sqlSession.getMapper(LectureDao.class);
-		return lectureDao.update(lecture);
-	}
-
-	@Override
-	public int delete(String code) {
-		LectureDao lectureDao;
-		lectureDao = sqlSession.getMapper(LectureDao.class);
-		return lectureDao.delete(code);
-	}
+   @Override
+   public int delete(String code) {
+      LectureDao lectureDao;
+      lectureDao = sqlSession.getMapper(LectureDao.class);
+      return lectureDao.delete(code);
+   }
 
 	@Override
 	public int getSize(String field, String query) {
 		LectureDao lectureDao;
-		lectureDao = sqlSession.getMapper(LectureDao.class);
+	    lectureDao = sqlSession.getMapper(LectureDao.class);
 		return lectureDao.getSize(field, query);
 	}
 

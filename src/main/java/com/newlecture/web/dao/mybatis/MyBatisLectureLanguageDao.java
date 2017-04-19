@@ -8,49 +8,51 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.newlecture.web.dao.LectureLanguageDao;
 import com.newlecture.web.entity.LectureLanguage;
 
+
+
 public class MyBatisLectureLanguageDao implements LectureLanguageDao {
 
 	@Autowired
 	private SqlSession sqlSession;
 
 	@Override
-	public int delete(String code) {
-		LectureLanguageDao lectureLanguageDao;
-		lectureLanguageDao = sqlSession.getMapper(LectureLanguageDao.class);
-
-		return lectureLanguageDao.delete(code);
+	public List<LectureLanguage> getList(String lectureCode) {
+		LectureLanguageDao lectureLanguageDao = sqlSession.getMapper(LectureLanguageDao.class);
+		
+		return lectureLanguageDao.getList(lectureCode);
 	}
+	
 
 	@Override
-	public LectureLanguage get(String code) {
-		LectureLanguageDao lectureLanguageDao;
-		lectureLanguageDao = sqlSession.getMapper(LectureLanguageDao.class);
-
-		return lectureLanguageDao.get(code);
+	public LectureLanguage get(String lectureCode, String languageCode) {
+		
+		LectureLanguageDao lectureLanguageDao = sqlSession.getMapper(LectureLanguageDao.class);
+		
+		return lectureLanguageDao.get(lectureCode, languageCode);
 	}
 
 	@Override
 	public int add(LectureLanguage lectureLanguage) {
-		LectureLanguageDao lectureLanguageDao;
-		lectureLanguageDao = sqlSession.getMapper(LectureLanguageDao.class);
-
+		LectureLanguageDao lectureLanguageDao = sqlSession.getMapper(LectureLanguageDao.class);
 		return lectureLanguageDao.add(lectureLanguage);
 	}
 
 	@Override
 	public int update(LectureLanguage lectureLanguage) {
-		LectureLanguageDao lectureLanguageDao;
-		lectureLanguageDao = sqlSession.getMapper(LectureLanguageDao.class);
-
+		LectureLanguageDao lectureLanguageDao = sqlSession.getMapper(LectureLanguageDao.class);
 		return lectureLanguageDao.update(lectureLanguage);
 	}
 
 	@Override
-	public List<LectureLanguage> getList(String lectureCode) {
-		LectureLanguageDao lectureLanguageDao;
-		lectureLanguageDao = sqlSession.getMapper(LectureLanguageDao.class);
-
-		return lectureLanguageDao.getList(lectureCode);
+	public int delete(String lectureCode, String languageCode) {
+		LectureLanguageDao lectureLanguageDao = sqlSession.getMapper(LectureLanguageDao.class);
+		return lectureLanguageDao.delete(lectureCode, languageCode);
 	}
+
+
+
+	
+
+
 
 }

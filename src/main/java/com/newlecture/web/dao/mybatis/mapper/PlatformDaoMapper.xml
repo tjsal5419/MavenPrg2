@@ -7,13 +7,15 @@
 	
 	<select id="getList" resultType="com.newlecture.web.entity.Platform">
 		SELECT `PLATFORM`.`CODE`,
-		    `PLATFORM`.`NAME`
-		FROM `newlecture`.`PLATFORM`			
+		    `PLATFORM`.`NAME`,
+		    `PLATFORM`.`VERSION`
+		FROM `newlecture`.`PLATFORM`		
 	</select>
 	
 	<select id="get" resultType="com.newlecture.web.entity.Platform">
 		SELECT `PLATFORM`.`CODE`,
-		    `PLATFORM`.`NAME`
+		    `PLATFORM`.`NAME`,
+		    `PLATFORM`.`VERSION`
 		FROM `newlecture`.`PLATFORM`	
 		WHERE CODE=#{code}
 	</select>	
@@ -25,12 +27,14 @@
 		INSERT INTO `newlecture`.`PLATFORM`
 		(
 			`CODE`,
-			`NAME`
+			`NAME`,
+			`VERSION`
 		)
 		VALUES
 		(
 			#{code},
-			#{name}
+			#{name},
+			#{version}
 		)		
 	</insert>
 	
@@ -43,7 +47,8 @@
 	<update id="update" parameterType="com.newlecture.web.entity.Platform">
 		UPDATE `newlecture`.`PLATFORM`
 		SET		
-		`NAME` = #{name}
+			`NAME` = #{name}
+			`VERSION` = #{version}
 		WHERE `CODE` = #{code}		
 	</update>
 	

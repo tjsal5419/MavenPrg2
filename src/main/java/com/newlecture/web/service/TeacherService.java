@@ -3,16 +3,15 @@ package com.newlecture.web.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.newlecture.web.dao.LectureDao;
 import com.newlecture.web.dao.LectureLanguageDao;
 import com.newlecture.web.dao.LecturePlatformDao;
 import com.newlecture.web.dao.LevelDao;
 import com.newlecture.web.entity.Lecture;
+import com.newlecture.web.entity.LectureLanguage;
 import com.newlecture.web.model.teacher.LectureModel;
 
-@Component
 public class TeacherService {
 	@Autowired
 	private LectureDao lectureDao;
@@ -25,7 +24,7 @@ public class TeacherService {
 	
 	@Autowired
 	private LevelDao levelDao;
-		
+	
 	public LectureModel getLectureModel(
 			int page, String field, String query){
 		
@@ -37,13 +36,13 @@ public class TeacherService {
 		model.setLectures(lectures);
 		model.setTotalPageCount(size);
 		
-		/*for(Lecture lec : lectures){
-			lec.setMember(?);
-			lec.setLevel(?);
+		for(Lecture lec : lectures){
+			//lec.setMember(?);
+			//lec.setLevel(?);
 			List<LectureLanguage> langs = lectureLanguageDao.getList(lec.getCode());
 			lec.setLanguages(langs);			
 			//lec.setPlatforms(platforms);
-		}*/
+		}
 		
 		
 		return model;

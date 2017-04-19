@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.newlecture.web.dao.LecturePlatformDao;
 import com.newlecture.web.entity.LecturePlatform;
 
-import com.newlecture.web.dao.LecturePlatformDao;
-import com.newlecture.web.entity.LecturePlatform;
 
 
 
@@ -17,57 +15,37 @@ public class MyBatisLecturePlatformDao implements LecturePlatformDao{
 
    @Autowired
    private SqlSession sqlSession;
-   
-   @Override
-   public List<LecturePlatform> getList(int page, String field, String query) {
-      LecturePlatformDao lecturePlatformDao;
-      lecturePlatformDao = sqlSession.getMapper(LecturePlatformDao.class);
-      
-      return lecturePlatformDao.getList(page, field, query);
-   }
-   
-   @Override
-   public List<LecturePlatform> getList(int page) {
-      
-      return getList(page, "TITLE", "");
-   }
-   
-   @Override
-   public List<LecturePlatform> getList() {
-      
-      return getList(1, "TITLE", "");
-   }
 
-   @Override
-   public int delete(String code) {
-      LecturePlatformDao lecturePlatformDao;
-      lecturePlatformDao = sqlSession.getMapper(LecturePlatformDao.class);
-
-      return lecturePlatformDao.delete(code);
-   }
-
-   @Override
-   public LecturePlatform get(String code) {
-      LecturePlatformDao lecturePlatformDao;
-      lecturePlatformDao = sqlSession.getMapper(LecturePlatformDao.class);
-
-      return lecturePlatformDao.get(code);
-   }
-
-   @Override
-   public int add(LecturePlatform lecturePlatform) {
-      LecturePlatformDao lecturePlatformDao;
-      lecturePlatformDao = sqlSession.getMapper(LecturePlatformDao.class);
-
-      return lecturePlatformDao.add(lecturePlatform);
-   }
-
-   @Override
-   public int update(LecturePlatform lecturePlatform) {
-      LecturePlatformDao lecturePlatformDao;
-      lecturePlatformDao = sqlSession.getMapper(LecturePlatformDao.class);
-
-      return lecturePlatformDao.update(lecturePlatform);
-   }
+	@Override
+	public List<LecturePlatform> getList() {
+		LecturePlatformDao lecturePlatformDao = sqlSession.getMapper(LecturePlatformDao.class);
+		return lecturePlatformDao.getList();
+	}
+	
+	@Override
+	public LecturePlatform get(String lectureCode, String platformCode) {
+		LecturePlatformDao lecturePlatformDao = sqlSession.getMapper(LecturePlatformDao.class);
+		return lecturePlatformDao.get(lectureCode, platformCode);
+	}
+	
+	@Override
+	public int add(LecturePlatform lecturePlatform) {
+		LecturePlatformDao lecturePlatformDao = sqlSession.getMapper(LecturePlatformDao.class);
+		return lecturePlatformDao.add(lecturePlatform);
+	}
+	
+	@Override
+	public int update(LecturePlatform lecturePlatform) {
+		LecturePlatformDao lecturePlatformDao = sqlSession.getMapper(LecturePlatformDao.class);
+		return lecturePlatformDao.update(lecturePlatform);
+	}
+	
+	@Override
+	public int delete(String lectureCode, String platformCode) {
+		LecturePlatformDao lecturePlatformDao = sqlSession.getMapper(LecturePlatformDao.class);
+		return lecturePlatformDao.delete(lectureCode, platformCode);
+	}
+    
+  
 
 }
