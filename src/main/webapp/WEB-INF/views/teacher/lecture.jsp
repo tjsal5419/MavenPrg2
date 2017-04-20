@@ -7,7 +7,7 @@
 		<c:forEach var="lec" items="${model.lectures}">		
 		<tr>
 			<td>${lec.title}</td>
-			<td>입문편</td>
+			<td>${lec.level.name}</td>
 			<td>
 				<input type="button" value="공개" />
 				<input type="button" value="편집" />
@@ -18,11 +18,11 @@
 			<td>
 				<!-- 강좌 언어 -->
 				<ul>
-				<%-- <c:forEach var="lang" items="${lec.languags}">	
+				<c:forEach var="lang" items="${lec.languages}">	
 					<li>
 						${lang.name}
 					</li>
-				</c:forEach> --%>
+				</c:forEach>
 				</ul>
 				<!-- 강좌 플랫폼 -->
 				<ul>

@@ -19,7 +19,7 @@ public class Lecture {
 	
 	//관계 entity
 	private List<LecturePlatform> platforms;
-	private List<LectureLanguage> languages;
+	private List<Language> languages;
 	
 	//부모 관계 entity
 	private Level level;
@@ -92,10 +92,10 @@ public class Lecture {
 	public void setPlatforms(List<LecturePlatform> platforms) {
 		this.platforms = platforms;
 	}
-	public List<LectureLanguage> getLanguages() {
+	public List<Language> getLanguages() {
 		return languages;
 	}
-	public void setLanguages(List<LectureLanguage> languages) {
+	public void setLanguages(List<Language> languages) {
 		this.languages = languages;
 	}
 	public Level getLevel() {

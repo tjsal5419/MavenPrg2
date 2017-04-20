@@ -2,43 +2,51 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    
+
 <mapper namespace="com.newlecture.web.dao.LevelDao">
-   
-   <select id="getList" resultType="com.newlecture.web.entity.Level">
-      SELECT `LEVEL`.`CODE`,
-       `PLATFORM`.`NAME`
-      FROM `PLATFORM`
-   </select>
-      
-   <select id="get" resultType="com.newlecture.web.entity.Level">
-      SELECT `LEVEL`.`CODE`,
-       `PLATFORM`.`NAME`
-      FROM `PLATFORM`
-      WHERE `CODE` = #{code}
-   </select> 
-   
-   <delete id="delete">
-      DELETE FROM `LEVEL`
-      WHERE `CODE` = #{code}
-   </delete>
-   
-   <update id="update" parameterType="com.newlecture.web.entity.Level">
-      UPDATE `LEVEL`
-      SET
-      `NAME` = #{name}
-      WHERE `CODE` = #{code}   
-   </update>
-   
-   <insert id="add" parameterType="com.newlecture.web.entity.Level"> 
-      <selectKey order="BEFORE" keyProperty="code" resultType="String">
-         select max(CAST(CODE AS UNSIGNED))+1 CODE from LEVEL
-      </selectKey>
-      INSERT INTO `LEVEL`
-      (`CODE`,
-      `NAME`)
-      VALUES
-      (#{code},
-      #{name})      
-   </insert>
+
+	<select id="getLevelOfLecture" resultType="com.newlecture.web.entity.Level">
+		SELECT L.*
+		FROM
+		LEVEL L INNER JOIN LECTURE T
+		ON L.CODE = T.LEVEL_CODE
+		WHERE T.CODE = #{lectureCode}
+	</select>
+
+	<select id="getList" resultType="com.newlecture.web.entity.Level">
+		SELECT `LEVEL`.`CODE`,
+		`PLATFORM`.`NAME`
+		FROM LEVEL
+	</select>
+
+	<select id="get" resultType="com.newlecture.web.entity.Level">
+		SELECT `LEVEL`.`CODE`,
+		`PLATFORM`.`NAME`
+		FROM `LEVEL`
+		WHERE `CODE` = #{code}
+	</select>
+
+	<delete id="delete">
+		DELETE FROM `LEVEL`
+		WHERE `CODE` = #{code}
+	</delete>
+
+	<update id="update" parameterType="com.newlecture.web.entity.Level">
+		UPDATE `LEVEL`
+		SET
+		`NAME` = #{name}
+		WHERE `CODE` = #{code}
+	</update>
+
+	<insert id="add" parameterType="com.newlecture.web.entity.Level">
+		<selectKey order="BEFORE" keyProperty="code" resultType="String">
+			select max(CAST(CODE AS UNSIGNED))+1 CODE from LEVEL
+		</selectKey>
+		INSERT INTO `LEVEL`
+		(`CODE`,
+		`NAME`)
+		VALUES
+		(#{code},
+		#{name})
+	</insert>
 </mapper>

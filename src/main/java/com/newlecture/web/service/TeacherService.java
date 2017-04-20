@@ -4,12 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.newlecture.web.dao.LanguageDao;
 import com.newlecture.web.dao.LectureDao;
 import com.newlecture.web.dao.LectureLanguageDao;
 import com.newlecture.web.dao.LecturePlatformDao;
 import com.newlecture.web.dao.LevelDao;
+import com.newlecture.web.entity.Language;
 import com.newlecture.web.entity.Lecture;
-import com.newlecture.web.entity.LectureLanguage;
 import com.newlecture.web.model.teacher.LectureModel;
 
 public class TeacherService {
@@ -18,6 +19,9 @@ public class TeacherService {
 	
 	@Autowired
 	private LectureLanguageDao lectureLanguageDao;
+	
+	@Autowired
+	private LanguageDao languageDao;
 	
 	@Autowired
 	private LecturePlatformDao lecturePlatformDao;
@@ -38,9 +42,14 @@ public class TeacherService {
 		
 		for(Lecture lec : lectures){
 			//lec.setMember(?);
-			//lec.setLevel(?);
-			List<LectureLanguage> langs = lectureLanguageDao.getList(lec.getCode());
-			lec.setLanguages(langs);			
+			
+			lec.setLevel(levelDao.getLevelOfLecture(lec.getCode()));
+			/*List<LectureLanguage> langs = lectureLanguageDao.getList(lec.getCode());
+			lec.setLanguages(langs);*/
+			List<Language> langs = languageDao.getListOfLecture(lec.getCode());
+			lec.setLanguages(langs);
+						
+			//langs.get(0).getLanguageCode()
 			//lec.setPlatforms(platforms);
 		}
 		

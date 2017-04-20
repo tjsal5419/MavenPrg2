@@ -5,6 +5,16 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.newlecture.web.dao.LanguageDao">
+
+	<select id="getListOfLecture" resultType="com.newlecture.web.entity.Language">
+	SELECT L.*
+	FROM 
+		LANGUAGE L 
+	    INNER JOIN LECTURE_LANGUAGE LL ON L.CODE = LL.LANGUAGE_CODE
+	    INNER JOIN LECTURE T ON LL.LECTURE_CODE = T.CODE
+	WHERE T.CODE = #{lectureCode}
+	</select>
+
 	<select id="getList" resultType="com.newlecture.web.entity.Language">
 		SELECT `LANGUAGE`.`CODE`,
 		    `LANGUAGE`.`NAME`,

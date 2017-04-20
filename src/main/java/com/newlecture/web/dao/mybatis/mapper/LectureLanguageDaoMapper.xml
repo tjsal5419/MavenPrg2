@@ -7,17 +7,15 @@
 <mapper namespace="com.newlecture.web.dao.LectureLanguageDao">
    
    <select id="getList" resultType="com.newlecture.web.entity.LectureLanguage">
-      SELECT `LECTURE_LANGUAGE`.`LECTURE_CODE`,
-		    `LECTURE_LANGUAGE`.`LANGUAGE_CODE`
-	  FROM `newlecture`.`LECTURE_LANGUAGE`
+      SELECT LECTURE_CODE lectureCode, LANGUAGE_CODE languageCode
+	  FROM LECTURE_LANGUAGE
 	  WHERE LECTURE_CODE=#{lectureCode}
    </select>
    
    <select id="get" resultType="com.newlecture.web.entity.LectureLanguage">
-		SELECT `LECTURE_LANGUAGE`.`LECTURE_CODE`,
-		    `LECTURE_LANGUAGE`.`LANGUAGE_CODE`
-	 	FROM `newlecture`.`LECTURE_LANGUAGE`
-		WHERE `LECTURE_CODE` = #{lectureCode} AND `LANGUAGE_CODE` = #{languageCode}
+		SELECT *
+	 	FROM LECTURE_LANGUAGE
+		WHERE LECTURE_CODE = #{lectureCode} AND LANGUAGE_CODE = #{languageCode}
 	</select>
 	
     <insert id="add" parameterType="com.newlecture.web.entity.LectureLanguage">

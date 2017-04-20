@@ -63,4 +63,12 @@ public class MyBatisLanguageDao implements LanguageDao {
 
 		return languageDao.delete(code);
 	}
+
+	@Override
+	public List<Language> getListOfLecture(String lectureCode) {
+		LanguageDao languageDao;
+		languageDao = sqlSession.getMapper(LanguageDao.class);
+
+		return languageDao.getListOfLecture(lectureCode);
+	}
 }

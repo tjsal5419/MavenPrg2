@@ -22,7 +22,6 @@ public class MyBatisLectureLanguageDao implements LectureLanguageDao {
 		return lectureLanguageDao.getList(lectureCode);
 	}
 	
-
 	@Override
 	public LectureLanguage get(String lectureCode, String languageCode) {
 		
