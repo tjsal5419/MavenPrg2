@@ -4,21 +4,21 @@ import java.util.Date;
 
 public class Notice {
 
-	private String code;
+	private String id;
 	private String title;
-	private String writer;
+	private String writerId;
 	private String content;
 	private Date regDate;
 	private int hit;
 
-
-	public String getCode() {
-		return code;
+	public String getId() {
+		return id;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setId(String id) {
+		this.id = id;
 	}
+
 
 	public String getTitle() {
 		return title;
@@ -28,14 +28,14 @@ public class Notice {
 		this.title = title;
 	}
 
-	public String getWriter() {
-		return writer;
+	public String getWriterId() {
+		return writerId;
 	}
 
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setWriterId(String writerId) {
+		this.writerId = writerId;
 	}
-
+	
 	public String getContent() {
 		return content;
 	}

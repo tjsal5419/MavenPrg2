@@ -1,35 +1,35 @@
 package com.newlecture.web.entity;
 
+import java.sql.Date;
 import java.util.List;
 
 public class Lecture {
 	
-	private String code;
+	private String id;
 	private String title;
-	private String context;
-	private String teacherName;
-	private String bookName;
-	private String bookImg;
-	private String target;
-	private String impactContext;
-	
-	//Not Null
+	private String highlight;
 	private String levelCode;
-	private String memberId;
-	
+	private String forWho;
+	private String bookTitle;
+	private String bookImg;
+	private String introduce;
+	private String target;
+	private String prerequisite;
+	private String writerId;
+	private Date	regDate;	
+			
 	//관계 entity
 	private List<LecturePlatform> platforms;
 	private List<Language> languages;
 	
 	//부모 관계 entity
 	private Level level;
-	private Member member;	
-	
-	public String getCode() {
-		return code;
+	private Member member;
+	public String getId() {
+		return id;
 	}
-	public void setCode(String code) {
-		this.code = code;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getTitle() {
 		return title;
@@ -37,41 +37,11 @@ public class Lecture {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getContext() {
-		return context;
+	public String getHighlight() {
+		return highlight;
 	}
-	public void setContext(String context) {
-		this.context = context;
-	}
-	public String getTeacherName() {
-		return teacherName;
-	}
-	public void setTeacherName(String teacherName) {
-		this.teacherName = teacherName;
-	}
-	public String getBookName() {
-		return bookName;
-	}
-	public void setBookName(String bookName) {
-		this.bookName = bookName;
-	}
-	public String getBookImg() {
-		return bookImg;
-	}
-	public void setBookImg(String bookImg) {
-		this.bookImg = bookImg;
-	}
-	public String getTarget() {
-		return target;
-	}
-	public void setTarget(String target) {
-		this.target = target;
-	}
-	public String getImpactContext() {
-		return impactContext;
-	}
-	public void setImpactContext(String impactContext) {
-		this.impactContext = impactContext;
+	public void setHighlight(String highlight) {
+		this.highlight = highlight;
 	}
 	public String getLevelCode() {
 		return levelCode;
@@ -79,13 +49,54 @@ public class Lecture {
 	public void setLevelCode(String levelCode) {
 		this.levelCode = levelCode;
 	}
-	public String getMemberId() {
-		return memberId;
+	public String getForWho() {
+		return forWho;
 	}
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
+	public void setForWho(String forWho) {
+		this.forWho = forWho;
 	}
-	
+	public String getBookTitle() {
+		return bookTitle;
+	}
+	public void setBookTitle(String bookTitle) {
+		this.bookTitle = bookTitle;
+	}
+	public String getBookImg() {
+		return bookImg;
+	}
+	public void setBookImg(String bookImg) {
+		this.bookImg = bookImg;
+	}
+	public String getIntroduce() {
+		return introduce;
+	}
+	public void setIntroduce(String introduce) {
+		this.introduce = introduce;
+	}
+	public String getTarget() {
+		return target;
+	}
+	public void setTarget(String target) {
+		this.target = target;
+	}
+	public String getPrerequisite() {
+		return prerequisite;
+	}
+	public void setPrerequisite(String prerequisite) {
+		this.prerequisite = prerequisite;
+	}
+	public String getWriterId() {
+		return writerId;
+	}
+	public void setWriterId(String writerId) {
+		this.writerId = writerId;
+	}
+	public Date getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
 	public List<LecturePlatform> getPlatforms() {
 		return platforms;
 	}
@@ -110,7 +121,5 @@ public class Lecture {
 	public void setMember(Member member) {
 		this.member = member;
 	}
-	
-	
 	
 }

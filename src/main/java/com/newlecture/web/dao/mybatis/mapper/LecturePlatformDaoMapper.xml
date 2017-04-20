@@ -5,42 +5,38 @@
 <mapper namespace="com.newlecture.web.dao.LecturePlatformDao">
 
 	<select id="getList" resultType="com.newlecture.web.entity.LecturePlatform">
-		SELECT `LECTURE_LANGUAGE`.`LECTURE_CODE`,
-		    `LECTURE_PLATFORM`.`PLATFORM_CODE`
-	   	FROM `newlecture`.`LECTURE_PLATFORM`
+		SELECT *
+	   	FROM LecturePlatform
 	</select>
 	
 	<select id="get" resultType="com.newlecture.web.entity.LecturePlatform">
-		SELECT `LECTURE_LANGUAGE`.`LECTURE_CODE`,
-		    `LECTURE_PLATFORM`.`PLATFORM_CODE`
-	   	FROM `newlecture`.`LECTURE_PLATFORM`
-	   	WHERE `LECTURE_CODE` = #{lectureCode} AND `PLATFORM_CODE` = #{platformCode}
+		SELECT *
+	   	FROM	LecturePlatform
+	   	WHERE lectureId = #{lectureId} AND platformId = #{platformId}
 	</select>
 
 	<insert id="add" parameterType="com.newlecture.web.entity.LecturePlatform">
-		<selectKey order="BEFORE" keyProperty="code" resultType="String">
-			SELECT MAX(CAST(CODE AS UNSIGNED))+1 CODE
-			FROM `newlecture`.`LECTURE_PLATFORM`
+		<selectKey order="BEFORE" keyProperty="id" resultType="String">
+			SELECT MAX(CAST(id AS UNSIGNED))+1 id
+			FROM LecturePlatform
 		</selectKey>
-		INSERT INTO `newlecture`.`LECTURE_LANGUAGE`
-		(`LECTURE_CODE`,
-		`PLATFORM_CODE`)
+		INSERT INTO LecturePlatform		
 		VALUES
-		(#{lectureCode},
-		#{platformCode})
+		(#{lectureId},
+		#{platformId})
 	</insert>
 
 	<update id="update" parameterType="com.newlecture.web.entity.LecturePlatform">
-		UPDATE `newlecture`.`LECTURE_LANGUAGE`
+		UPDATE LecturePlatform
 		SET
-		`LECTURE_CODE` = #{lectureCode},
-		`LANGUAGE_CODE` = #{languageCode}>
-	  	WHERE `LECTURE_CODE` = #{lectureCode} AND `PLATFORM_CODE` = #{platformCode}
+		lectureId = #{lectureId},
+		platformId = #{platformId}>
+	  	WHERE lectureId = #{lectureId} AND platformId = #{platformId}
 	</update>
 
 	<delete id="delete">
-		DELETE FROM `newlecture`.`LECTURE_LANGUAGE`
-	 	WHERE `LECTURE_CODE` = #{lectureCode} AND `PLATFORM_CODE` = #{platformCode} 
+		DELETE FROM LecturePlatform
+	 	WHERE lectureId = #{lectureId} AND platformId = #{platformId}
 	</delete>
 
 </mapper>

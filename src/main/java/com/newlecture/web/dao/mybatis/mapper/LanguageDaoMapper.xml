@@ -10,35 +10,31 @@
 	SELECT L.*
 	FROM 
 		LANGUAGE L 
-	    INNER JOIN LECTURE_LANGUAGE LL ON L.CODE = LL.LANGUAGE_CODE
-	    INNER JOIN LECTURE T ON LL.LECTURE_CODE = T.CODE
-	WHERE T.CODE = #{lectureCode}
+	    INNER JOIN LectureLanguage LL ON L.id = LL.languageId
+	    INNER JOIN Lecure T ON LL.lectureId = T.id
+	WHERE T.id = #{lectureId}
 	</select>
 
 	<select id="getList" resultType="com.newlecture.web.entity.Language">
-		SELECT `LANGUAGE`.`CODE`,
-		    `LANGUAGE`.`NAME`,
-		    `LANGUAGE`.`VERSION`
-		FROM `newlecture`.`LANGUAGE`
+		SELECT *
+		FROM Language
 	</select>
 	<select id="get" resultType="com.newlecture.web.entity.Language">
-		SELECT `LANGUAGE`.`CODE`,
-		    `LANGUAGE`.`NAME`,
-		    `LANGUAGE`.`VERSION`
-		FROM `newlecture`.`LANGUAGE`
-		WHERE CODE=#{code}
+		SELECT *
+		FROM Language
+		WHERE id=#{id}
 	</select>
 
 
 	<insert id="add" parameterType="com.newlecture.web.entity.Language">
-		<selectKey order="BEFORE" keyProperty="code" resultType="String">
-			select max(cast(code as unsigned))+1 Code from Language
+		<selectKey order="BEFORE" keyProperty="id" resultType="String">
+			select max(cast(id as unsigned))+1 id from Language
 		</selectKey>
-		INSERT INTO `newlecture`.`LANGUAGE`
+		INSERT INTO Language
 		(
-			`CODE`,
-			`NAME`,
-			`VERSION`
+			id, 
+			name, 
+			version
 		)
 		VALUES
 		( 
@@ -49,15 +45,15 @@
 	</insert>
 
 	<update id="update" parameterType="com.newlecture.web.entity.Language">
-		UPDATE `newlecture`.`LANGUAGE`
+		UPDATE Language
 		SET
-			`NAME` = #{name}
+			Name = #{name}
 			`VERSION` = #{version}
-		WHERE `CODE` = #{code}
+		WHERE id = #{id}
 	</update>
 
 	<delete id="delete">
 		DELETE FROM `newlecture`.`LANGUAGE` 
-		WHERE CODE=#{code}
+		WHERE id=#{id}
 	</delete>
 </mapper>

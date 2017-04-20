@@ -1,19 +1,19 @@
 package com.newlecture.web.entity;
 
 public class LecturePlatform {
-	private String platformCode;
-	private String lectureCode;
+	private String platformId;
+	private String lectureId;
 	
-	public String getPlatformCode() {
-		return platformCode;
+	public String getPlatformId() {
+		return platformId;
 	}
-	public void setPlatformCode(String platformCode) {
-		this.platformCode = platformCode;
+	public void setPlatformId(String platformId) {
+		this.platformId = platformId;
 	}
-	public String getLectureCode() {
-		return lectureCode;
+	public String getLectureId() {
+		return lectureId;
 	}
-	public void setLectureCode(String lectureCode) {
-		this.lectureCode = lectureCode;
+	public void setLectureId(String lectureId) {
+		this.lectureId = lectureId;
 	}
 }

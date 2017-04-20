@@ -34,11 +34,11 @@ public class MyBatisPlatformDao implements PlatformDao{
    }
 
    @Override
-   public Platform get(String code) {
+   public Platform get(String id) {
       PlatformDao platformDao;
       platformDao = sqlSession.getMapper(PlatformDao.class);
       
-      return platformDao.get(code);
+      return platformDao.get(id);
    }
 
    @Override
@@ -58,11 +58,11 @@ public class MyBatisPlatformDao implements PlatformDao{
    }
 
    @Override
-   public int delete(String code) {
+   public int delete(String id) {
       PlatformDao platformDao;
       platformDao = sqlSession.getMapper(PlatformDao.class);
       
-      return platformDao.delete(code);
+      return platformDao.delete(id);
    }
 
 

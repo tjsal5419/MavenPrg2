@@ -14,11 +14,11 @@ public interface NoticeDao {
 	
 	String lastCode();
 	
-	@Select("SELECT * FROM NOTICE_VIEW	WHERE CODE=#{code}")
-	NoticeView get(String code);
+	@Select("SELECT * FROM NOTICE_VIEW	WHERE CODE=#{id}")
+	NoticeView get(String id);
 	
-	NoticeView getPrev(String code);
-	NoticeView getNext(String code);
+	NoticeView getPrev(String id);
+	NoticeView getNext(String id);
 	
 	List<NoticeView> getList();
 	List<NoticeView> getList(int page);
@@ -31,18 +31,18 @@ public interface NoticeDao {
 	int getSize(String field, String query);
 	
 	@SelectKey(
-			statement="SELECT MAX(CAST(CODE AS UNSIGNED))+1 CODE FROM NOTICE",
+			statement="SELECT MAX(CAST(id AS UNSIGNED))+1 id FROM NOTICE",
 			before=true,
-			keyProperty="code",
+			keyProperty="id",
 			resultType=String.class)
 	@Insert("INSERT INTO NOTICE( "+
-			"CODE, "+
-			"TITLE, "+
-			"WRITER, "+
-			"CONTENT "+
+			"id, "+
+			"title, "+
+			"writer, "+
+			"content "+
 		")  "+
 		"VALUES( "+
-		"	#{code}, "+
+		"	#{id}, "+
 		"	#{title}, "+
 		"	#{writer}, "+
 		"	#{content} "+
@@ -51,7 +51,7 @@ public interface NoticeDao {
 	int add(String title, String content, String writer);
 	
 	int	 update(Notice notice);
-	int	 update(String title, String content, String code);
+	int	 update(String title, String content, String id);
 	
-	int delete(String code);
+	int delete(String id);
 }

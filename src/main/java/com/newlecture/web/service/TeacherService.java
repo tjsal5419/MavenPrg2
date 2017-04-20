@@ -43,10 +43,10 @@ public class TeacherService {
 		for(Lecture lec : lectures){
 			//lec.setMember(?);
 			
-			lec.setLevel(levelDao.getLevelOfLecture(lec.getCode()));
+			lec.setLevel(levelDao.getLevelOfLecture(lec.getId()));
 			/*List<LectureLanguage> langs = lectureLanguageDao.getList(lec.getCode());
 			lec.setLanguages(langs);*/
-			List<Language> langs = languageDao.getListOfLecture(lec.getCode());
+			List<Language> langs = languageDao.getListOfLecture(lec.getId());
 			lec.setLanguages(langs);
 						
 			//langs.get(0).getLanguageCode()

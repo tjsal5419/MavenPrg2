@@ -1,15 +1,15 @@
 package com.newlecture.web.entity;
 
 public class NoticeFile {
-	private String code;
+	private String id;
 	private String src;
-	private String noticeCode;
+	private String noticeId;
 	
-	public String getCode() {
-		return code;
+	public String getId() {
+		return id;
 	}
-	public void setCode(String code) {
-		this.code = code;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getSrc() {
 		return src;
@@ -17,12 +17,11 @@ public class NoticeFile {
 	public void setSrc(String src) {
 		this.src = src;
 	}
-	public String getNoticeCode() {
-		return noticeCode;
+	public String getNoticeId() {
+		return noticeId;
 	}
-	public void setNoticeCode(String noticeCode) {
-		this.noticeCode = noticeCode;
+	public void setNoticeId(String noticeId) {
+		this.noticeId = noticeId;
 	}
-	
 	
 }

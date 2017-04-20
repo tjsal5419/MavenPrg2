@@ -7,39 +7,37 @@
 <mapper namespace="com.newlecture.web.dao.LectureLanguageDao">
    
    <select id="getList" resultType="com.newlecture.web.entity.LectureLanguage">
-      SELECT LECTURE_CODE lectureCode, LANGUAGE_CODE languageCode
-	  FROM LECTURE_LANGUAGE
-	  WHERE LECTURE_CODE=#{lectureCode}
+      SELECT *
+	  FROM LectureLanguage
+	  WHERE lectrueId=#{lectureId}
    </select>
    
    <select id="get" resultType="com.newlecture.web.entity.LectureLanguage">
 		SELECT *
-	 	FROM LECTURE_LANGUAGE
-		WHERE LECTURE_CODE = #{lectureCode} AND LANGUAGE_CODE = #{languageCode}
+	 	FROM LectureLanguage
+		WHERE lectureId = #{lectureId} AND languageId = #{languageId}
 	</select>
 	
     <insert id="add" parameterType="com.newlecture.web.entity.LectureLanguage">
-       <selectKey order="BEFORE" keyProperty="code" resultType="String">
-         select max(cast(code as unsigned))+1 Code from LECTURE_LANGUAGE
+       <selectKey order="BEFORE" keyProperty="id" resultType="String">
+         select max(cast(id as unsigned))+1 id from LectureLanguage
       </selectKey>
-     	 INSERT INTO `newlecture`.`LECTURE_LANGUAGE`
-		(`LECTURE_CODE`,
-		`LANGUAGE_CODE`)
+     	 INSERT INTO LectureLanguage		
 		VALUES
-		(#{lectureCode},
-		#{languageCode})
+		(#{lectureId},
+		#{languageId})
    </insert>
    
    <update id="update" parameterType="com.newlecture.web.entity.LectureLanguage">
-      UPDATE `newlecture`.`LECTURE_LANGUAGE`
+      UPDATE LectureLanguage
 		SET
-		`LECTURE_CODE` = #{lectureCode},
-		`LANGUAGE_CODE` = #{languageCode}>
-	  WHERE `LECTURE_CODE` = #{lectureCode} AND `LANGUAGE_CODE` = #{languageCode}
+		lectureId = #{lectureId},
+		languageId = #{languageId}>
+	  WHERE lectureId = #{lectureId} AND languageId = #{languageId}
    </update>
 
    <delete id="delete">
-     DELETE FROM `newlecture`.`LECTURE_LANGUAGE`
-	 WHERE `LECTURE_CODE` = #{lectureCode} AND `LANGUAGE_CODE` = #{languageCode}   
+     DELETE FROM LectureLanguage
+	 WHERE lectureId = #{lectureId} AND languageId = #{languageId}   
    </delete>
 </mapper>

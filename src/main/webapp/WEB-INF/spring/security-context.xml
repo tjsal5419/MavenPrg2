@@ -26,8 +26,8 @@
 	<authentication-manager>
 		<authentication-provider>
 			<jdbc-user-service data-source-ref="dataSource"
-				users-by-username-query="SELECT ID userid, PWD password, 1 enabled FROM MEMBER WHERE ID=?"
-				authorities-by-username-query="SELECT MEMBER_ID userid, ROLE_ID authorities FROM MEMBER_ROLE WHERE MEMBER_ID=?"
+				users-by-username-query="SELECT id userid, pwd password, 1 enabled FROM Member WHERE id=?"
+				authorities-by-username-query="SELECT memberId userid, roleId authorities FROM MemberRole WHERE memberId=?"
 			/>
 			<!-- <user-service>
 				<user name="test" password="111" authorities="ROLE_USER" />

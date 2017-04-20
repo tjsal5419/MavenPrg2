@@ -33,10 +33,10 @@ public class MyBatisLectureDao implements LectureDao {
    }
 
    @Override
-   public Lecture get(String code) {
+   public Lecture get(String id) {
       LectureDao lectureDao;
       lectureDao = sqlSession.getMapper(LectureDao.class);
-      return lectureDao.get(code);
+      return lectureDao.get(id);
    }
 
    @Override
@@ -54,10 +54,10 @@ public class MyBatisLectureDao implements LectureDao {
    }
 
    @Override
-   public int delete(String code) {
+   public int delete(String id) {
       LectureDao lectureDao;
       lectureDao = sqlSession.getMapper(LectureDao.class);
-      return lectureDao.delete(code);
+      return lectureDao.delete(id);
    }
 
 	@Override

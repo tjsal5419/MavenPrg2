@@ -23,9 +23,9 @@ public class MyBatisLecturePlatformDao implements LecturePlatformDao{
 	}
 	
 	@Override
-	public LecturePlatform get(String lectureCode, String platformCode) {
+	public LecturePlatform get(String lectureId, String platformId) {
 		LecturePlatformDao lecturePlatformDao = sqlSession.getMapper(LecturePlatformDao.class);
-		return lecturePlatformDao.get(lectureCode, platformCode);
+		return lecturePlatformDao.get(lectureId, platformId);
 	}
 	
 	@Override
@@ -41,9 +41,9 @@ public class MyBatisLecturePlatformDao implements LecturePlatformDao{
 	}
 	
 	@Override
-	public int delete(String lectureCode, String platformCode) {
+	public int delete(String lectureId, String platformId) {
 		LecturePlatformDao lecturePlatformDao = sqlSession.getMapper(LecturePlatformDao.class);
-		return lecturePlatformDao.delete(lectureCode, platformCode);
+		return lecturePlatformDao.delete(lectureId, platformId);
 	}
     
   

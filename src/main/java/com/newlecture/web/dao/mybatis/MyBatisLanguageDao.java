@@ -33,11 +33,11 @@ public class MyBatisLanguageDao implements LanguageDao {
 	}
 
 	@Override
-	public Language get(String code) {
+	public Language get(String id) {
 		LanguageDao languageDao;
 		languageDao = sqlSession.getMapper(LanguageDao.class);
 
-		return languageDao.get(code);
+		return languageDao.get(id);
 	}
 
 	@Override
@@ -57,18 +57,18 @@ public class MyBatisLanguageDao implements LanguageDao {
 	}
 
 	@Override
-	public int delete(String code) {
+	public int delete(String id) {
 		LanguageDao languageDao;
 		languageDao = sqlSession.getMapper(LanguageDao.class);
 
-		return languageDao.delete(code);
+		return languageDao.delete(id);
 	}
 
 	@Override
-	public List<Language> getListOfLecture(String lectureCode) {
+	public List<Language> getListOfLecture(String lectureId) {
 		LanguageDao languageDao;
 		languageDao = sqlSession.getMapper(LanguageDao.class);
 
-		return languageDao.getListOfLecture(lectureCode);
+		return languageDao.getListOfLecture(lectureId);
 	}
 }

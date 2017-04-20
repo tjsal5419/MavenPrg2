@@ -9,9 +9,9 @@ public interface LecturePlatformDao {
 
 	List<LecturePlatform> getList();
 	
-	LecturePlatform get(String lectureCode, String platformCode);
+	LecturePlatform get(String lectureId, String platformId);
 	
 	int add(LecturePlatform lecturePlatform);
 	int update(LecturePlatform lecturePlatform);
-	int delete(String lectureCode, String platformCode);
+	int delete(String lectureId, String platformId);
 }

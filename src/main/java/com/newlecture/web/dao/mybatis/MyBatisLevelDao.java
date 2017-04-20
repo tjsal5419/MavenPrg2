@@ -23,12 +23,12 @@ public class MyBatisLevelDao implements LevelDao{
    }
 
    @Override
-   public Level get(String code) {
+   public Level get(String id) {
       // TODO Auto-generated method stub
       LevelDao levelDao;
       levelDao = sqlSession.getMapper(LevelDao.class);
       
-      return levelDao.get(code);
+      return levelDao.get(id);
    }
 
    @Override
@@ -46,17 +46,17 @@ public class MyBatisLevelDao implements LevelDao{
    }
 
    @Override
-   public int delete(String code) {
+   public int delete(String id) {
       LevelDao levelDao;
       levelDao = sqlSession.getMapper(LevelDao.class);
-      return levelDao.delete(code);
+      return levelDao.delete(id);
    }
 
 @Override
-public Level getLevelOfLecture(String lectureCode) {
+public Level getLevelOfLecture(String lectureId) {
 	LevelDao levelDao;
     levelDao = sqlSession.getMapper(LevelDao.class);
-    return levelDao.getLevelOfLecture(lectureCode);
+    return levelDao.getLevelOfLecture(lectureId);
 }
 
 }

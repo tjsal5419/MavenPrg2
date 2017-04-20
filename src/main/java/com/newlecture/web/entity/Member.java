@@ -24,7 +24,7 @@ public class Member {
 	private String guid;
 	private boolean disabled;
 	private String disabledReason;
-	private String lastLoginIp;
+	private String lastLoginIP;
 	private String lastLoginPlatform;
 	private Date lastLoginTime;
 
@@ -196,12 +196,13 @@ public class Member {
 		this.disabledReason = disabledReason;
 	}
 
-	public String getLastLoginIp() {
-		return lastLoginIp;
+	
+	public String getLastLoginIP() {
+		return lastLoginIP;
 	}
 
-	public void setLastLoginIp(String lastLoginIp) {
-		this.lastLoginIp = lastLoginIp;
+	public void setLastLoginIP(String lastLoginIP) {
+		this.lastLoginIP = lastLoginIP;
 	}
 
 	public String getLastLoginPlatform() {

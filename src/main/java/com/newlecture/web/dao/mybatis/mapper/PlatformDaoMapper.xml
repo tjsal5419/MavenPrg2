@@ -6,50 +6,46 @@
 <mapper namespace="com.newlecture.web.dao.PlatformDao">
 	
 	<select id="getList" resultType="com.newlecture.web.entity.Platform">
-		SELECT `PLATFORM`.`CODE`,
-		    `PLATFORM`.`NAME`,
-		    `PLATFORM`.`VERSION`
-		FROM `newlecture`.`PLATFORM`		
+		SELECT *
+		FROM Platform
 	</select>
 	
 	<select id="get" resultType="com.newlecture.web.entity.Platform">
-		SELECT `PLATFORM`.`CODE`,
-		    `PLATFORM`.`NAME`,
-		    `PLATFORM`.`VERSION`
-		FROM `newlecture`.`PLATFORM`	
-		WHERE CODE=#{code}
+		SELECT *
+		FROM Platform
+		WHERE id=#{id}
 	</select>	
 	
 	<insert id="add" parameterType="com.newlecture.web.entity.Platform">
-		<selectKey order="BEFORE" keyProperty="code" resultType="String">
-			SELECT MAX(CAST(CODE AS UNSIGNED))+1 CODE FROM PLATFORM
+		<selectKey order="BEFORE" keyProperty="id" resultType="String">
+			SELECT MAX(CAST(id AS UNSIGNED))+1 id FROM Platform
 		</selectKey>
-		INSERT INTO `newlecture`.`PLATFORM`
+		INSERT INTO Platform
 		(
-			`CODE`,
-			`NAME`,
-			`VERSION`
+			id,
+			name,
+			version
 		)
 		VALUES
 		(
-			#{code},
+			#{id},
 			#{name},
 			#{version}
 		)		
 	</insert>
 	
 	<delete id="delete">
-		DELETE FROM `newlecture`.`PLATFORM`
-		WHERE CODE=#{code}
+		DELETE FROM Platform
+		WHERE id=#{id}
 		
 	</delete>
 	
 	<update id="update" parameterType="com.newlecture.web.entity.Platform">
-		UPDATE `newlecture`.`PLATFORM`
+		UPDATE Platform
 		SET		
-			`NAME` = #{name}
-			`VERSION` = #{version}
-		WHERE `CODE` = #{code}		
+			name = #{name}
+			version = #{version}
+		WHERE id=#{id}
 	</update>
 	
 </mapper>

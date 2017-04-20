@@ -16,18 +16,18 @@ public class MyBatisLectureLanguageDao implements LectureLanguageDao {
 	private SqlSession sqlSession;
 
 	@Override
-	public List<LectureLanguage> getList(String lectureCode) {
+	public List<LectureLanguage> getList(String lectureId) {
 		LectureLanguageDao lectureLanguageDao = sqlSession.getMapper(LectureLanguageDao.class);
 		
-		return lectureLanguageDao.getList(lectureCode);
+		return lectureLanguageDao.getList(lectureId);
 	}
 	
 	@Override
-	public LectureLanguage get(String lectureCode, String languageCode) {
+	public LectureLanguage get(String lectureId, String languageId) {
 		
 		LectureLanguageDao lectureLanguageDao = sqlSession.getMapper(LectureLanguageDao.class);
 		
-		return lectureLanguageDao.get(lectureCode, languageCode);
+		return lectureLanguageDao.get(lectureId, languageId);
 	}
 
 	@Override
@@ -43,9 +43,9 @@ public class MyBatisLectureLanguageDao implements LectureLanguageDao {
 	}
 
 	@Override
-	public int delete(String lectureCode, String languageCode) {
+	public int delete(String lectureId, String languageId) {
 		LectureLanguageDao lectureLanguageDao = sqlSession.getMapper(LectureLanguageDao.class);
-		return lectureLanguageDao.delete(lectureCode, languageCode);
+		return lectureLanguageDao.delete(lectureId, languageId);
 	}
 
 
