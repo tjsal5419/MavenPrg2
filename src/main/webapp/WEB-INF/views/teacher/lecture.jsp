@@ -7,7 +7,7 @@
 		<c:forEach var="lec" items="${model.lectures}">		
 		<tr>
 			<td>${lec.title}</td>
-			<td>${lec.level.name}</td>
+			<td>${lec.levelName}</td>
 			<td>
 				<input type="button" value="공개" />
 				<input type="button" value="편집" />

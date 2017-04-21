@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.newlecture.web.dao.LectureDao;
 import com.newlecture.web.entity.Lecture;
+import com.newlecture.web.entity.LectureView;
 
 public class MyBatisLectureDao implements LectureDao {
    
@@ -14,26 +15,26 @@ public class MyBatisLectureDao implements LectureDao {
    private SqlSession sqlSession;
 
    @Override
-   public List<Lecture> getList(int page, String field, String query) {
+   public List<LectureView> getList(int page, String field, String query) {
       LectureDao lectureDao;
       lectureDao = sqlSession.getMapper(LectureDao.class);
       return lectureDao.getList(page, field, query);
    }
 
    @Override
-   public List<Lecture> getList(int page) {
+   public List<LectureView> getList(int page) {
       
       return getList(page, "TITLE", "");
    }
 
    @Override
-   public List<Lecture> getList() {
+   public List<LectureView> getList() {
       
       return getList(1, "TITLE", "");
    }
 
    @Override
-   public Lecture get(String id) {
+   public LectureView get(String id) {
       LectureDao lectureDao;
       lectureDao = sqlSession.getMapper(LectureDao.class);
       return lectureDao.get(id);

@@ -3,13 +3,14 @@ package com.newlecture.web.dao;
 import java.util.List;
 
 import com.newlecture.web.entity.Lecture;
+import com.newlecture.web.entity.LectureView;
 
 public interface LectureDao {
 	
-	List<Lecture> getList(int page, String field, String query);
-	List<Lecture> getList(int page);
-	List<Lecture> getList();	
-	Lecture get(String id);
+	List<LectureView> getList(int page, String field, String query);
+	List<LectureView> getList(int page);
+	List<LectureView> getList();	
+	LectureView get(String id);
 
 	int getSize(String field, String query);
 

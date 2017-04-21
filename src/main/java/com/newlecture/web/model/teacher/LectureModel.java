@@ -2,18 +2,18 @@ package com.newlecture.web.model.teacher;
 
 import java.util.List;
 
-import com.newlecture.web.entity.Lecture;
+import com.newlecture.web.entity.LectureView;
 
 public class LectureModel {
 
-	private List<Lecture> lectures;
+	private List<LectureView> lectures;
 	private int totalPageCount;
 	
-	public List<Lecture> getLectures() {
+	public List<LectureView> getLectures() {
 		return lectures;
 	}
 
-	public void setLectures(List<Lecture> lectures) {
+	public void setLectures(List<LectureView> lectures) {
 		this.lectures = lectures;
 	}
 

@@ -9,9 +9,9 @@
 	<select id="getListOfLecture" resultType="com.newlecture.web.entity.Language">
 	SELECT L.*
 	FROM 
-		LANGUAGE L 
+		Language L 
 	    INNER JOIN LectureLanguage LL ON L.id = LL.languageId
-	    INNER JOIN Lecure T ON LL.lectureId = T.id
+	    INNER JOIN Lecture T ON LL.lectureId = T.id
 	WHERE T.id = #{lectureId}
 	</select>
 

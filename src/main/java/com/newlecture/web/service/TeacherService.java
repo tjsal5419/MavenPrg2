@@ -11,6 +11,7 @@ import com.newlecture.web.dao.LecturePlatformDao;
 import com.newlecture.web.dao.LevelDao;
 import com.newlecture.web.entity.Language;
 import com.newlecture.web.entity.Lecture;
+import com.newlecture.web.entity.LectureView;
 import com.newlecture.web.model.teacher.LectureModel;
 
 public class TeacherService {
@@ -34,13 +35,13 @@ public class TeacherService {
 		
 		LectureModel model = new LectureModel();
 		
-		List<Lecture> lectures = lectureDao.getList(page, field, query);
+		List<LectureView> lectures = lectureDao.getList(page, field, query);
 		int size = lectureDao.getSize(field, query);
 		
 		model.setLectures(lectures);
 		model.setTotalPageCount(size);
 		
-		for(Lecture lec : lectures){
+		for(LectureView lec : lectures){
 			//lec.setMember(?);
 			
 			lec.setLevel(levelDao.getLevelOfLecture(lec.getId()));
