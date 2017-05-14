@@ -25,7 +25,7 @@ public class TeacherController {
 	@RequestMapping("lecture")
 	public String lecture(
 			@RequestParam(value="p", defaultValue="1")Integer page, 
-			@RequestParam(value="f", defaultValue="TITLE")String field, 
+			@RequestParam(value="f", defaultValue="title")String field, 
 			@RequestParam(value="q", defaultValue="")String query, Model model){
 		
 		LectureModel m = service.getLectureModel(page, field, query);
@@ -35,10 +35,14 @@ public class TeacherController {
 	}
 	
 	@RequestMapping("lecture-detail")
-	public String lectureDetail(String code, Model model){
-		
-		//LectureDetailModel m = service.getLectureDetailModel(code);
-		//model.addAttribute("model", m);
+	public String lectureDetail(
+			@RequestParam(value="p", defaultValue="1")Integer page, 
+			@RequestParam(value="f", defaultValue="id")String field, 
+			@RequestParam(value="q", defaultValue="")String query,
+			Model model){
+			
+			LectureModel m = service.getLectureModel(page, field, query);
+			model.addAttribute("model", m);
 		
 		return "teacher.lecture-detail";
 	}

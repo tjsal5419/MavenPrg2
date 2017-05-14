@@ -8,9 +8,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<!-- 뷰포트 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body>
+	<main>
+
 	<h1>로그인${validate}</h1>
-	<form action="${root}/j_spring_security_check" method="post">
+	<form action="`${root}/j_spring_security_check" method="post">
 		<fieldset>
 			<table>
 				<c:if test="${not empty validate && not validate}">
@@ -34,5 +38,6 @@
 			</table>
 		</fieldset>
 	</form>
+	</main>
 </body>
 </html>

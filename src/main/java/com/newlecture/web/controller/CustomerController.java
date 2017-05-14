@@ -106,14 +106,14 @@ public class CustomerController {
 				}
 			}
 		
-		notice.setWriter("newlec");
+		notice.setWriterId("newlec");
 		noticeDao.add(notice);
 		
 		for(MultipartFile file : files){
 			if(!file.isEmpty()){
 				String fileName = file.getOriginalFilename();
 				NoticeFile f = new NoticeFile();
-				f.setNoticeCode(noticeDao.lastCode());
+				f.setNoticeId(noticeDao.lastCode());
 				f.setSrc(fileName);
 				noticeFileDao.add(f);
 			}
@@ -154,7 +154,7 @@ public class CustomerController {
 				
 		noticeDao.update(notice);
 		
-		return "redirect:notice-detail?c="+notice.getCode();
+		return "redirect:notice-detail?c="+notice.getId();
 	}
 	
 	

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.newlecture.web.dao.ChapterDao">
+
+   <select id="getList" resultType="com.newlecture.web.entity.Chapter">
+      SELECT *
+      FROM newlecture.Chapter
+      WHERE lectureId=#{lectureId}
+   </select>
+   
+   <select id="get" resultType="com.newlecture.web.entity.Chapter">
+      SELECT *
+      FROM Chapter
+      WHERE id=#{id}
+   </select>
+
+
+   <insert id="add" parameterType="com.newlecture.web.entity.Chapter">
+      <selectKey order="BEFORE" keyProperty="id" resultType="String">
+         select max(cast(id as unsigned))+1 id from Chapter
+      </selectKey>
+      INSERT INTO Chapter
+      (`id`,
+      `title`,
+      `lectureId`)
+      VALUES
+      (#{id},
+      #{title},
+      #{lectureId })
+
+   </insert>
+
+   <update id="update" parameterType="com.newlecture.web.entity.Chapter">
+      UPDATE Chapter
+      SET      
+      `title` = #{title },
+      `lectureId` = #{lectureId }
+      WHERE `id` = #{id}
+
+   </update>
+
+   <delete id="delete">
+      DELETE FROM Chapter 
+      WHERE id=#{id}
+   </delete>
+</mapper>

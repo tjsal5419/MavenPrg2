@@ -19,8 +19,9 @@ public class Lecture {
 	private Date	regDate;	
 			
 	//관계 entity
-	private List<LecturePlatform> platforms;
+	private List<Platform> platforms;
 	private List<Language> languages;
+	private List<Chapter> chapters;
 	
 	//부모 관계 entity
 	private Level level;
@@ -97,10 +98,10 @@ public class Lecture {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	public List<LecturePlatform> getPlatforms() {
+	public List<Platform> getPlatforms() {
 		return platforms;
 	}
-	public void setPlatforms(List<LecturePlatform> platforms) {
+	public void setPlatforms(List<Platform> platforms) {
 		this.platforms = platforms;
 	}
 	public List<Language> getLanguages() {
@@ -121,5 +122,13 @@ public class Lecture {
 	public void setMember(Member member) {
 		this.member = member;
 	}
+	
+	public List<Chapter> getChapters() {
+		return chapters;
+	}
+	public void setChapters(List<Chapter> chapter) {
+		this.chapters = chapter;
+	}
+	
 	
 }

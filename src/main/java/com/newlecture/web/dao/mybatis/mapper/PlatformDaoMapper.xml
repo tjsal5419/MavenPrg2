@@ -10,11 +10,21 @@
 		FROM Platform
 	</select>
 	
+	<select id="getListOfLecture" resultType="com.newlecture.web.entity.Platform">
+		SELECT P.*
+		FROM LecturePlatform LP
+		Inner Join Lecture L
+		On LP.lectureId = L.id
+		Inner Join Platform P
+		On P.id = LP.platformId
+		WHERE L.id = #{lectureCode};
+	</select>
+	
 	<select id="get" resultType="com.newlecture.web.entity.Platform">
 		SELECT *
 		FROM Platform
 		WHERE id=#{id}
-	</select>	
+	</select>
 	
 	<insert id="add" parameterType="com.newlecture.web.entity.Platform">
 		<selectKey order="BEFORE" keyProperty="id" resultType="String">

@@ -9,6 +9,7 @@ public interface PlatformDao {
 	List<Platform> getList();
 	List<Platform> getList(int page);
 	List<Platform> getList(int page, String field, String query);
+	List<Platform> getListOfLecture(String lectureId);
 	Platform get(String id);
 	
 	int add(Platform platform);

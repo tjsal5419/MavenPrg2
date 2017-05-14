@@ -13,7 +13,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url"
 			value="jdbc:mysql://211.238.142.84/newlecture?autoReconnect=true&amp;useSSL=false&amp;characterEncoding=UTF-8" />
-		<property name="username" value="newlec" />
+		<property name="username" value="sist" />
 		<property name="password" value="sclass" />
 	</bean>
 
@@ -36,7 +36,9 @@
 	<bean class="com.newlecture.web.dao.mybatis.MyBatisMemberRoleDao" />
 	<bean class="com.newlecture.web.dao.mybatis.MyBatisNoticeDao" />
 	<bean class="com.newlecture.web.dao.mybatis.MyBatisNoticeFileDao" />
-	<bean class="com.newlecture.web.dao.mybatis.MyBatisPlatformDao" />	
+	<bean class="com.newlecture.web.dao.mybatis.MyBatisPlatformDao" />
+	<bean class="com.newlecture.web.dao.mybatis.MyBatisUnitDao" />
+	<bean class="com.newlecture.web.dao.mybatis.MyBatisChapterDao" />
 	
 	<context:annotation-config /><!-- Autowired가 필요한 곳에서 설정함 -->
 	<bean class="com.newlecture.web.service.AdminService" />

@@ -7,39 +7,29 @@
 	display: none;
 }
 
+
+
 body{
 	font-family: 돋움, Arial, sans-serif;
 	font-size: 11px;
 	color : #979797;
 }
 
-
-.clearfix:after {
-	content: ".";
-	display: block;
-	clear: both;
-	visibility: hidden;
-	line-height: 0;
-	height: 0;
-}
-
-.clearfix {
-	display: inline-block;
+.hidden{
+   display: none;
 }
 
 .margin{
-	margin-top: 10px;
+   margin-top:10px;   
 }
 
 .aside-margin{
-	margin-top: 45px;
+   margin-top:45px;
 }
 
 .main-margin{
-	margin-top: 49px;
+   margin-top:49px;
 }
-
-
 /* --------------------------VIsual Style--------------------------------- */
 
 /* --------------------------Aside Style--------------------------------- */
@@ -91,7 +81,6 @@ body{
    font-size: 24px; 
    padding-left: 0px;
    background :none;
-   margin-top: 43px;
 }
 
 .aside-menu-item {
@@ -199,7 +188,7 @@ notice{
    
 }
 
-. -table tbody td:nth-child(2){
+.table tbody td:nth-child(2){
 	text-align: left;
 	text-indent : 5px;
 }

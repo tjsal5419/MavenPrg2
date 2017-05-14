@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="/MavenPrj/resource/css/style.css" type="text/css" rel="stylesheet" />
+<script>
+
+   window.addEventListener("load", function(e){
+      console.log("loaded");
+      var mainCategory = document.querySelector("#main-category");
+	      mainCategory.onchange = function(event){
+	    		//alert(mainCategory.value);
+	    		var category = mainCategory.value;
+	    		var subCategory = document.querySelector("#sub-category");
+                subCategory.innerHTML = "";
+
+	    		var request = new window.XMLHttpRequest();
+	    		
+				request.open("GET","/MavenPrj/category?id="+category, true);
+				request.send(null);
+				request.onload=function(){
+					var list = JSON.parse(request.responseText);
+                    for(var i=0;i<list.length;i++){
+    					var option = document.createElement("option");
+                        option.textContent = list[i].title;
+                        alert(list[i].title);
+                        alert(option);
+                        subCategory.appendChild(option);
+                    }
+                    
+
+				};
+	      };
+   });
+
+   /*    
+   window.addEventListener("scroll", function(e){
+      console.log(document.scrollingElement.scrollTop);  //edge, 크롬 
+      //혹은 
+      //console.log(document.body.scrollTop);  //크롬,사파리,오페라
+      //console.log(document.documentElement.scrollTop);  //IE, edge, firefox
+      
+      if(document.scrollingElement.scrollTop>50){   
+         var header = document.querySelector("#header");
+         header.style.position="fixed";
+      }
+      if(document.scrollingElement.scrollTop<50){
+         var header = document.querySelector("#header");
+         header.style.position="";
+      }
+   });
+    */
+</script>
+</head>
+<body>
+   <header id="header"> 
+      <div><img src="/MavenPrj/resource/images/ic_menu_black_24dp_1x.png"/></div>
+      <h1><a><img src="/MavenPrj/resource/images/logo.png"/></a></h1>
+      <div><img src="/MavenPrj/resource/images/ic_search_black_24dp_1x.png"/></div>
+   </header>
+   <div id="visual">
+      비쥬얼
+   </div>
+   <div id="notice">
+      [자세히]
+      <div>
+      	대분류
+      		<select id="main-category">
+      			<option value="0">분류선택</option> 
+      			<!-- div로 데이터를 받아오는 경우, data-set사용 -->
+      			<option value="1">서울</option>
+      			<option value="2">경기</option>
+      			<option value="3">강원</option>	
+      		</select>
+      </div>
+      <div>
+      	소분류
+          <select id="sub-category">
+          </select>
+      </div>
+   </div>
+   <main id="lectures">
+      강좌목록
+   </main>
+   <footer id="footer">
+      Copyright@newlecture.com
+   </footer>
+</body>
+</html>

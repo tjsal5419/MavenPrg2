@@ -6,12 +6,13 @@
 	<table>
 		<c:forEach var="lec" items="${model.lectures}">		
 		<tr>
-			<td>${lec.title}</td>
+			<td><a href="lecture-detail?q=${lec.id}">${lec.title}</a></td>
 			<td>${lec.levelName}</td>
+			<td>${lec.memberName}</td>
 			<td>
-				<input type="button" value="공개" />
-				<input type="button" value="편집" />
-				<input type="button" value="삭제" />
+				<a href="">공개</a>
+				<a href="">편집</a>
+				<a href="">삭제</a>
 			</td>
 		</tr>
 		<tr>
