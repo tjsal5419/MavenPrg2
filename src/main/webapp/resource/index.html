@@ -5,37 +5,11 @@
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="/MavenPrj/resource/css/style.css" type="text/css" rel="stylesheet" />
-<script>
-
+<!-- <script>
    window.addEventListener("load", function(e){
       console.log("loaded");
-      var mainCategory = document.querySelector("#main-category");
-	      mainCategory.onchange = function(event){
-	    		//alert(mainCategory.value);
-	    		var category = mainCategory.value;
-	    		var subCategory = document.querySelector("#sub-category");
-                subCategory.innerHTML = "";
-
-	    		var request = new window.XMLHttpRequest();
-	    		
-				request.open("GET","/MavenPrj/category?id="+category, true);
-				request.send(null);
-				request.onload=function(){
-					var list = JSON.parse(request.responseText);
-                    for(var i=0;i<list.length;i++){
-    					var option = document.createElement("option");
-                        option.textContent = list[i].title;
-                        alert(list[i].title);
-                        alert(option);
-                        subCategory.appendChild(option);
-                    }
-                    
-
-				};
-	      };
    });
-
-   /*    
+   
    window.addEventListener("scroll", function(e){
       console.log(document.scrollingElement.scrollTop);  //edge, 크롬 
       //혹은 
@@ -51,8 +25,7 @@
          header.style.position="";
       }
    });
-    */
-</script>
+</script> -->
 </head>
 <body>
    <header id="header"> 
@@ -61,25 +34,77 @@
       <div><img src="/MavenPrj/resource/images/ic_search_black_24dp_1x.png"/></div>
    </header>
    <div id="visual">
-      비쥬얼
+      <h2 class="hidden">신규 강좌목록</h2>
+      <ul>
+         <li style='background:url("/MavenPrj/resource/images/lecture/banner-javascript180.png") no-repeat center; background-size: cover;'>
+         	<a href=""></a>
+         </li>
+
+         <li style='background:url("/MavenPrj/resource/images/lecture/banner-oracle180.png") no-repeat center; background-size: cover;'>
+         	<a href=""></a>
+         </li>
+         <li style='background:url("/MavenPrj/resource/images/lecture/banner-spring180.png") no-repeat center; background-size: cover;'>
+         	<a href=""></a>
+         </li>
+      </ul>
+      
    </div>
+   <!-- <script>
+      window.addEventListener("load", function(e){
+         var mainCategory = document.querySelector("#main-category");
+         var subCategory = document.querySelector("#sub-category");
+         mainCategory.onchange=function(event){
+            //alert(mainCategory.value); value값을 가져와서 그 값에 해당하는 중분류 갖고오기
+            //alert(event.target.dataset.title) 콤보박스를 쓰지 않았을떄
+            var id = mainCategory.value;
+            var request = new XMLHttpRequest();
+            request.onload = function(event){
+
+               //alert(request.responseText);
+               var list = JSON.parse(request.responseText);
+               //alert(list[0].title);
+               
+               //콤보박스 모든 항목 지우기
+               subCategory.innerHTML="";
+               
+               //기본선택옵션추가하기
+               var option = document.createElement("option");
+               option.value=0;
+               option.textContent="분류선택";
+               
+               subCategory.appendChild(option);
+               
+               //검색옵션추가하기
+               for(var i=0; i<list.length;i++){
+                  option = document.createElement("option");
+                  option.value=list[i].id;
+                  option.textContent=list[i].title;
+                  subCategory.appendChild(option);
+               }
+            };
+            request.open("GET","/MavenPrj/category?id="+id);
+            //데이터 가져오는
+            request.send(null);
+         };
+      });
+   </script> -->
    <div id="notice">
       [자세히]
-      <div>
-      	대분류
-      		<select id="main-category">
-      			<option value="0">분류선택</option> 
-      			<!-- div로 데이터를 받아오는 경우, data-set사용 -->
-      			<option value="1">서울</option>
-      			<option value="2">경기</option>
-      			<option value="3">강원</option>	
-      		</select>
-      </div>
-      <div>
-      	소분류
-          <select id="sub-category">
-          </select>
-      </div>
+      <!-- <div>
+         대분류
+         <select id="main-category">
+            <option data-id="0" data-title="ㅁㅁㅁ" value="0">분류선택</option>
+            <option data-id="1" data-title="ㅂㅂㅂ"value="1">서울</option>
+            <option data-id="2" data-title="ㅈㅈ"value="2">경기</option>
+            <option data-id="3" data-title="ㄷㄷㄷ" value="3">강원</option>
+            <option data-id="4" data-title="ㄱㄱㄱ"value="4">춘천</option>
+            <option data-id="5" data-title="ㅅㅅ"value="5">제주</option>
+         </select>
+         중분류
+         <select id="sub-category">
+            <option>분류선택</option>
+         </select>
+      </div> -->
    </div>
    <main id="lectures">
       강좌목록

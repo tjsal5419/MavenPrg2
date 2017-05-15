@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="/MavenPrj/resource/css/style.css" type="text/css" rel="stylesheet" />
+<script>
+   window.addEventListener("load", function(e){
+	      var mainCategory = document.querySelector("#main-category");
+	       var subCategory = document.querySelector("#sub-category");
+	       mainCategory.onchange=function(event){
+	          //alert(mainCategory.value); value값을 가져와서 그 값에 해당하는 중분류 갖고오기
+	          //alert(event.target.dataset.title) 콤보박스를 쓰지 않았을떄
+	          var id = mainCategory.value;
+	          var request = new XMLHttpRequest();
+	          request.onload = function(event){
+
+	             //alert(request.responseText);
+	             var list = JSON.parse(request.responseText);
+	             //alert(list[0].title);
+	             
+	             //콤보박스 모든 항목 지우기
+	             subCategory.innerHTML="";
+	             
+	             //기본선택옵션추가하기
+	             var option = document.createElement("option");
+	             option.value=0;
+	             option.textContent="분류선택";
+	             
+	             subCategory.appendChild(option);
+	             
+	             //검색옵션추가하기
+	             for(var i=0; i<list.length;i++){
+	                option = document.createElement("option");
+	                option.value=list[i].id;
+	                option.textContent=list[i].title;
+	                subCategory.appendChild(option);
+	             }
+	          };
+	          request.open("GET","/MavenPrj/category?id="+id);
+	          //데이터 가져오는
+	          request.send(null);
+	       };
+   });
+   
+   window.addEventListener("scroll", function(e){
+      console.log(document.scrollingElement.scrollTop);  //edge, 크롬 
+      //혹은 
+      //console.log(document.body.scrollTop);  //크롬,사파리,오페라
+      //console.log(document.documentElement.scrollTop);  //IE, edge, firefox
+      
+      if(document.scrollingElement.scrollTop>50){   
+         var header = document.querySelector("#header");
+         header.style.position="fixed";
+      }
+      if(document.scrollingElement.scrollTop<50){
+         var header = document.querySelector("#header");
+         header.style.position="";
+      }
+   });
+   
+</script>
+</head>
+<body>
+   <header id="header"> 
+      <div><img src="/MavenPrj/resource/images/ic_menu_black_24dp_1x.png"/></div>
+      <h1><a><img src="/MavenPrj/resource/images/logo.png"/></a></h1>
+      <div><img src="/MavenPrj/resource/images/ic_search_black_24dp_1x.png"/></div>
+   </header>
+   <div id="visual">
+   </div>
+   <div id="notice">
+      [자세히]
+      <div>
+         대분류
+         <select id="main-category">
+            <option data-id="0" data-title="ㅁㅁㅁ" value="0">분류선택</option>
+            <option data-id="1" data-title="ㅂㅂㅂ"value="1">서울</option>
+            <option data-id="2" data-title="ㅈㅈ"value="2">경기</option>
+            <option data-id="3" data-title="ㄷㄷㄷ" value="3">강원</option>
+            <option data-id="4" data-title="ㄱㄱㄱ"value="4">춘천</option>
+            <option data-id="5" data-title="ㅅㅅ"value="5">제주</option>
+         </select>
+         중분류
+         <select id="sub-category">
+            <option>분류선택</option>
+         </select>
+      </div>
+   </div>
+   <main id="lectures">
+      강좌목록
+   </main>
+   <footer id="footer">
+      Copyright@newlecture.com
+   </footer>
+</body>
+</html>

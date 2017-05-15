@@ -4,10 +4,22 @@ body{
    margin:0px;
 }
 
+ul{	
+	margin:0px;
+	padding:0px;
+}
+
+li{
+	display : block;
+}
+/* -----------------------------common----------------------------------------------- */
+.hidden{
+	display: none;
+}
 /*---------------------------------------------------------------------------------------*/
 
 #header{
-   /* position:fixed; */
+   position:fixed;
    top:0px;
    
    
@@ -23,7 +35,6 @@ body{
    box-shadow: 0px 1px 1px #a8a8a8;
    box-sizing: border-box;
    padding:10px;
-   
    /* flex-shrink:2; */
 }
 
@@ -51,8 +62,25 @@ body{
 /*--- visual-------------------------------------------------------------------*/
 
 #visual{
-   height: 150px;
+   height: 100px;
    background: rgb(49, 49, 49);
+   padding-top : 50px;
+   overflow: hidden;
+   z-index: 10;
+}
+
+#visual ul{
+	height : inherit; /* 100%; inherit은 상속이 안되는 태그가 있음. block은 상속이 됨 */
+	display : flex;
+   	width : 300%;
+   	position : absolute;
+   	left : -20%;
+   	/* margin-left : -50%; */
+}
+
+#visual ul li{
+	height: inherit;
+	width : 100%;
 }
 
 #notice{
