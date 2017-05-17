@@ -26,16 +26,55 @@
       }
    });
 </script> -->
+<script>
+      window.addEventListener("load",function(){
+    	  	var visual = document.querySelector("visual");
+            var banner = document.querySelector(".banner");
+            var prevButton = document.querySelector(".move-button .prev-button");
+            var nextButton = document.querySelector(".move-button .next-button");
+
+            banner.style.left="0%";
+            prevButton.onclick = function(){
+
+            };
+            
+            nextButton.onclick = function(){
+            	var left = parseInt(banner.style.left)-100+"%"; 
+            	/* transition은 요소의 위치 초기 값을 꼭 설정해줘야함. */
+           
+                banner.style.left = left;
+            };
+      });
+
+</script>
 </head>
 <body>
-   <header id="header"> 
-      <div><img src="/MavenPrj/resource/images/ic_menu_black_24dp_1x.png"/></div>
-      <h1><a><img src="/MavenPrj/resource/images/logo.png"/></a></h1>
-      <div><img src="/MavenPrj/resource/images/ic_search_black_24dp_1x.png"/></div>
-   </header>
+
+	<div id="header">
+      <div><img src="/MavenPrj/resource/images/ic_menu_black_24dp_1x.png" /></div>
+         
+      <div class="content-container">      
+         <h1><a><img src="/MavenPrj/resource/images/logo-sm.png" /></a></h1>      
+         <section>
+            <nav id="main-menu">
+               <h1 class="hidden">메인메뉴</h1>
+               <ul>
+                  <li><a href="">학습가이드</a></li>
+                  <li><a href="">뉴렉과정</a></li>
+                  <li><a href="">강좌선택</a></li>
+               </ul>
+            </nav>
+         </section>
+      </div>
+         
+      <div class=""><img src="/MavenPrj/resource/images/ic_search_black_24dp_1x.png" /></div>
+      <div class="more-vert-button"><img src="/MavenPrj/resource/images/ic_more_vert_black_24dp_1x.png" /></div>
+      
+   </div>
+   
    <div id="visual">
       <h2 class="hidden">신규 강좌목록</h2>
-      <ul>
+      <ul class="banner">
          <li style='background:url("/MavenPrj/resource/images/lecture/banner-javascript180.png") no-repeat center; background-size: cover;'>
          	<a href=""></a>
          </li>
@@ -46,6 +85,11 @@
          <li style='background:url("/MavenPrj/resource/images/lecture/banner-spring180.png") no-repeat center; background-size: cover;'>
          	<a href=""></a>
          </li>
+      </ul>
+      
+      <ul class="move-button">
+      	<li class="prev-button">이전</li>
+      	<li class="next-button">다음</li>
       </ul>
       
    </div>

@@ -12,6 +12,11 @@ ul{
 li{
 	display : block;
 }
+
+h1{
+	margin:0px;
+}
+
 /* -----------------------------common----------------------------------------------- */
 .hidden{
 	display: none;
@@ -21,8 +26,6 @@ li{
 #header{
    position:fixed;
    top:0px;
-   
-   
    display: flex;
    flex-direction:row;
    flex-wrap:nowrap;   
@@ -36,28 +39,50 @@ li{
    box-sizing: border-box;
    padding:10px;
    /* flex-shrink:2; */
+   z-index: 10;
 }
 
 #header>div:first-child{
-   order : 1;
+   order:1;
 }
 
-#header>h1{
-   order : 2;
+#main-menu{
+	display:none;
+}
+
+
+#main-menu>ul{
+	display:flex;
+    flex-direction: row;
+    line-height:50px;
+}
+
+#header .content-container{
+	order:1;
+	flex-grow:1;
+   	text-align: center;
+ 	display:flex;
+	flex-direction:row;
+    justify-content: center;
+}
+
+.content-container>h1{
+      display: flex;
+	align-items: center;
+}
+
+#header>div:nth-child(3){
+   display:none;
 }
 
 #header>div:last-child{
-   order : 3;
-}
-
-#header>h1{
-   flex-grow:1;
-   text-align: center;
+	order:4;
 }
 
 #header>h1 img{
    vertical-align:middle;
 }
+
 
 /*--- visual-------------------------------------------------------------------*/
 
@@ -69,24 +94,67 @@ li{
    z-index: 10;
 }
 
-#visual ul{
+#visual .banner{
 	height : inherit; /* 100%; inherit은 상속이 안되는 태그가 있음. block은 상속이 됨 */
 	display : flex;
    	width : 300%;
    	position : absolute;
-   	left : -20%;
+   	
+   	/* transition은 초기 위치가 꼭 0으로 지정이 되어야한다. */
+   	left : 0px;
+   	/* 움직일 때, 이동 시간 */
+	transition-duration:1s;
    	/* margin-left : -50%; */
 }
 
-#visual ul li{
+#visual .banner li{
 	height: inherit;
 	width : 100%;
+}
+
+/* 기존의 요소가 앱솔루트가 되면서 static의 무브버튼이 뒤로 넘어가게됨. 앱솔루트로 바꿔주자. */
+#visual .move-button{
+	position: absolute;
+	display:flex;
+	
+	/* 배너의 크기에 맞춰 가로를 확장해준다. */ 
+	width:100%;
+	height : 100px;
+	
+	/* 아이템들을 양 중앙 옆 배치 */
+	justify-content: space-between;
+	/* 아이템을 중앙에 배치 */
+    align-items: center;
+}
+
+.prev-button{
+	/* 백그라운드 이미지를 움직여야하므로 x축으로 -33px만큼 움직인다. */
+	background: url("../images/icon-banner-nav.png") no-repeat -35px center;
+	
+	/* absolute는 부모의 영역이 없기 때문에 content크기에 맞춰지므로 가로 세로를 지정해준다. */
+	width :35px;
+	height:52px;
+	
+	/* 글자 숨기기 */
+	text-indent:-999px;
+	overflow:hidden;
+}
+
+/* absoult가 되면서 block의 기본사이즈가 파괴되고 content에 맞춰 줄어들게됨.(따라갈 부모가 없어져서) */
+.next-button{
+	width :35px;
+	height:52px;
+	background: url("../images/icon-banner-nav.png") no-repeat -105px center;	
+	justify-content:flex-end;
+	text-indent:-999px;
+	overflow:hidden;
 }
 
 #notice{
    height: 30px;
    background: #8cba35;
 }
+
 
 /*--- main-------------------------------------------------------------------*/
 
@@ -160,7 +228,16 @@ li{
 /*--- media쿼리는 위로 갈 수 없음 (위에 것을 덮어쓰는 스타일이기 때문에)-ex.media all(모든 디바이스), screen, print 등--------------*/
 
 @media all and (min-width:480px) and (max-width:768px){
-   .title{
+	.more-vert-button{
+		display: none;
+	}
+
+	#main-menu{
+		display:block;
+	}	
+	
+	
+	.title{
       font-size:30px;
       color:green;
    }
