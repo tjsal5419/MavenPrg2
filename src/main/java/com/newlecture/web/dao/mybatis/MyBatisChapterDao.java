@@ -50,6 +50,24 @@ public class MyBatisChapterDao implements ChapterDao{
 		chapterDao = sqlSession.getMapper(ChapterDao.class);
 		return chapterDao.delete(id);
 	}
+
+	@Override
+	public List<Chapter> getList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Chapter> getList(int page, String field, String query) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Chapter> getList(int page) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	   
  
 
