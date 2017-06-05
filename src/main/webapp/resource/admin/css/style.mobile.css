@@ -1,0 +1,18 @@
+/*----------------reset---------------------*/
+
+/*------------Common style----------------*/
+table{
+    border-top: 2px solid red;
+}
+
+ul{
+    
+}
+
+th.mobile, td.mobile{
+    display: none;
+}
+
+/*-------------layout style-----------------*/
+
+/*-------------------ComponentStyle---------*/

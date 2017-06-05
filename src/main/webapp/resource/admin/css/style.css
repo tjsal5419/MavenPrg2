@@ -1,0 +1,19 @@
+@import url("style.desktop.css");
+@import url("style.tablet.css") all and (min-width:641px);
+@import url("style.mobile.css") all and (max-width:640px);
+
+
+/*----------------reset---------------------*/
+
+/*------------Common style----------------*/
+table{
+    border-top: 2px solid #8cba34;
+}
+
+ul{
+    
+}
+
+/*-------------layout style-----------------*/
+
+/*-------------------ComponentStyle---------*/

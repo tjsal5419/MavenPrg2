@@ -1,0 +1,67 @@
+
+<!--사용할 모듈을 지정해준다.-->
+<html ng-app="calc-app">
+    <head>
+        <meta charset="UTF-8">
+        <title>Egogogogogo</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script>
+            // 모듈을 만드는 도구를 생성
+            var calcAppModule = angular.module("calc-app",[]);
+            // 모듈로 감싸면 함수가 전역화 ===> 지역화 된다.
+            // 컨트롤러로써 지역화 시킨다.
+            calcAppModule.controller("calc-controller",function($scope){
+
+                // request에 바인딩(=scope로 바인딩해주기)
+                var notices = [
+                    {id:"1",title:"jsp....."},
+                    {id:"2",title:"C....."},
+                    {id:"3",title:"JAVA....."} 
+                ];
+                $scope.notices = notices;
+
+                $scope.hi = "Hello";
+                $scope.x = 0;
+                $scope.y = 0;
+
+                $scope.sumButtonClick = function(){
+                    $scope.result = $scope.x + $scope.y;
+                };
+
+                $scope.deleteLastNotices = function(){
+                    notices.pop();
+                };
+            });
+        </script>
+    </head>
+    <!--ng-controller로 컨트롤러를 지정해준다.-->
+    <!--ng-model 은 2way(1way: 모델->뷰 데이터 전달, 2way: 모델->뷰->모델->뷰)-->
+    <body ng-controller="calc-controller">
+    <h1>{{hi}}</h1>
+        x: <input type="number" value="0" ng-model="x"/>
+        y: <input type="number"     value="0" ng-model="y"/><br/>
+        <input type="button" value="계산" ng-click="sumButtonClick()"/>
+        sum: {{x+y}} 그리고 {{result}}
+        
+        <div>
+            <input type="button" value="삭제하기" ng-click="deleteLastNotices()"/>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <td>번호</td>
+                    <td>제목</td>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="n in notices">
+                    <td>{{n.id}}</td>
+                    <td>{{n.title}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </body>
+</html>

@@ -4,28 +4,41 @@ body{
    margin:0px;
 }
 
-ul{	
-	margin:0px;
-	padding:0px;
+ul{   
+   margin: 0px;
+   padding: 0px;
 }
 
 li{
-	display : block;
+   display: block;
 }
 
 h1{
-	margin:0px;
+   margin:0px;
+   
 }
 
-/* -----------------------------common----------------------------------------------- */
+/*-----------common-----------------------------------------------------------------------*/
+
 .hidden{
-	display: none;
+   display: none;
 }
-/*---------------------------------------------------------------------------------------*/
 
+/*바뀐부분*/
+.color-red {
+	color: #ff0000;
+}
+/*바뀐부분*/
+.deprecated {
+	text-decoration: line-through;
+}
+
+/*---------------------------------------------------------------------------------------*/
+/*바뀐부분*/
 #header{
    position:fixed;
    top:0px;
+   
    display: flex;
    flex-direction:row;
    flex-wrap:nowrap;   
@@ -35,120 +48,167 @@ h1{
    
    align-items:center;
    
-   box-shadow: 0px 1px 1px #a8a8a8;
+   /*box-shadow: 0px 1px 1px #a8a8a8;*/
    box-sizing: border-box;
    padding:10px;
+   
+   z-index:100;
    /* flex-shrink:2; */
-   z-index: 10;
 }
 
-#header>div:first-child{
-   order:1;
+/* #header>div:first-child{
+   order : 1;
 }
 
-#main-menu{
-	display:none;
-}
+#header>h1{
+   order : 2;
+} */
 
-
-#main-menu>ul{
-	display:flex;
-    flex-direction: row;
-    line-height:50px;
+#header>div:last-child{
+   order : 1;
 }
 
 #header .content-container{
-	order:1;
-	flex-grow:1;
-   	text-align: center;
- 	display:flex;
-	flex-direction:row;
-    justify-content: center;
-}
-
-.content-container>h1{
-      display: flex;
-	align-items: center;
-}
-
-#header>div:nth-child(3){
-   display:none;
-}
-
-#header>div:last-child{
-	order:4;
+   flex-grow:1;
+   text-align: center;
+   
+   display: flex;
+   flex-direction:row;
+   justify-content:center;
 }
 
 #header>h1 img{
    vertical-align:middle;
 }
 
+#main-menu{
+   display:none;
+   
+}
+
+#main-menu > ul{
+   display: flex;
+   line-height: 50px;
+}
+
+#header>h1{
+   text-align: center;
+}
+
+#main-menu>ul>li>a{
+   font-family:맑은 고딕, 고딕, sans-serif;
+   font-size: 14px;
+   font-weight: bold;
+   text-decoration: none;
+}
+#main-menu a{
+   color: #000000;
+}
+
+#main-menu li a:hover{
+   text-decoration: underline;
+}
+
+#main-menu li{
+   padding-left: 24px;
+   background: url("../images/bg-main-menu-vsp.png") no-repeat 13px center;
+}
+
+#main-menu li:first-child{
+   background: none !important;
+   padding-left: 0px !important;
+}
+
+.more-vert-button{
+   cursor:pointer;
+}
+
+.mov-button{
+   cursor:pointer;
+}
+
 
 /*--- visual-------------------------------------------------------------------*/
 
-#visual{
+.side-menu{
+   z-index: 101;
+   position:fixed;
+   left:-70%;
+   width: 50%;
+   height: 100%;
+   background: red;
+   top: 0px;
+   transition-duration: 0.5s;
+   transition-property:left;
+}
+
+.hamburger-button{
+   cursor:pointer;
+}
+
+#visual {
    height: 100px;
    background: rgb(49, 49, 49);
-   padding-top : 50px;
+   padding-top:50px;
+   
    overflow: hidden;
-   z-index: 10;
+   
+   position: relative;
+   /* z-index:2; */
+
+   transition-duration: 0.5s;
+   /*transition-property: margin-top;*/
 }
 
 #visual .banner{
-	height : inherit; /* 100%; inherit은 상속이 안되는 태그가 있음. block은 상속이 됨 */
-	display : flex;
-   	width : 300%;
-   	position : absolute;
-   	
-   	/* transition은 초기 위치가 꼭 0으로 지정이 되어야한다. */
-   	left : 0px;
-   	/* 움직일 때, 이동 시간 */
-	transition-duration:1s;
-   	/* margin-left : -50%; */
+   height: 100px;
+   display: flex;
+   width: 300%;
+   
+   position:absolute;
+   /* margin-left:-100%; */
+
+   right:0px;
+   left:0px;
+
+   transition-duration: 1s;
+   transition-property: left;
 }
 
-#visual .banner li{
-	height: inherit;
-	width : 100%;
+#visual  .banner li{
+   height: inherit;
+   width:100%;
 }
 
-/* 기존의 요소가 앱솔루트가 되면서 static의 무브버튼이 뒤로 넘어가게됨. 앱솔루트로 바꿔주자. */
-#visual .move-button{
-	position: absolute;
-	display:flex;
-	
-	/* 배너의 크기에 맞춰 가로를 확장해준다. */ 
-	width:100%;
-	height : 100px;
-	
-	/* 아이템들을 양 중앙 옆 배치 */
-	justify-content: space-between;
-	/* 아이템을 중앙에 배치 */
-    align-items: center;
+#visual .mov-button{
+   position:absolute; 
+   
+   display: flex;
+   width: 100%;
+   height: 100px;
+   justify-content: space-between;
+   align-items: center;
 }
 
 .prev-button{
-	/* 백그라운드 이미지를 움직여야하므로 x축으로 -33px만큼 움직인다. */
-	background: url("../images/icon-banner-nav.png") no-repeat -35px center;
-	
-	/* absolute는 부모의 영역이 없기 때문에 content크기에 맞춰지므로 가로 세로를 지정해준다. */
-	width :35px;
-	height:52px;
-	
-	/* 글자 숨기기 */
-	text-indent:-999px;
-	overflow:hidden;
+   width:33px;
+   height:52px;
+   background: url("../images/icon-banner-nav.png") no-repeat -35px center;   
+
+   text-indent: -999px;
+   overflow: hidden;
 }
 
-/* absoult가 되면서 block의 기본사이즈가 파괴되고 content에 맞춰 줄어들게됨.(따라갈 부모가 없어져서) */
 .next-button{
-	width :35px;
-	height:52px;
-	background: url("../images/icon-banner-nav.png") no-repeat -105px center;	
-	justify-content:flex-end;
-	text-indent:-999px;
-	overflow:hidden;
+   width:33px;
+   height:52px;
+   background: url("../images/icon-banner-nav.png") no-repeat -105px center;
+   
+   text-indent: -999px;
+   overflow: hidden;
 }
+
+/*--- notice-------------------------------------------------------------------*/
 
 #notice{
    height: 30px;
@@ -156,43 +216,90 @@ h1{
 }
 
 
-/*--- main-------------------------------------------------------------------*/
-
-#lectures{
+/*--- lecture-------------------------------------------------------------------*/
+/*바뀐부분*/
+.lecture{
    box-shadow: 0px 1px 1px #a8a8a8;
    min-height: 1000px;
 }
 
+.lecture .item{
+   display: flex;
+   flex-direction: row;
+
+   border-bottom:#292929 1px solid;
+   padding:10px;
+   height: 80px;
+
+   box-sizing: border-box;
+}
+.lecture .logo {
+	width: 70px;
+}
+.lecture .logo .picture{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.lecture .img{
+   width:100%;
+   vertical-align: middle;
+}
+/*바뀐부분*/
+.lecture .info {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+  padding:10px;
+  padding-bottom: 20px;
+	box-sizing: border-box;;
+	font-size: 11px;
+	color: #000;
+	flex: 1;
+}
+/*바뀐부분*/
+.lecture .info .title {
+	font-size: 13px;
+  display: inherit;
+}
+
+/*.item과 .event사이에는 띄어쓰기를 쓰지 않아서 자식을 찾는 것이 아니라 아이템이면서, 이벤트클래스를 갖는 것에 속성을 준다.*/
+.lecture .item.event{
+   background: url("../images/lecture/bg-title-event-box.png") no-repeat right bottom;
+}
+
+.lecture .item.normal{
+   background: url("../images/lecture/bg-title-normal-box.png") no-repeat right bottom;
+}
+
+.lecture .item.new{
+   background: url("../images/lecture/bg-title-new-box.png") no-repeat right bottom;
+}
+
+.price .normal{
+   text-decoration: line-through;
+}
+/*바뀐부분*/
+.lecture .info .update {
+	margin-left: 20px;
+}
+
 /*--- footer-------------------------------------------------------------------*/
 
-#footer{
-   height: 50px;
-   background: rgb(49, 49, 49);
+.footer{
+
+
 }
+
 
 /*--- css-------------------------------------------------------------------*/
-.title{
+/*.title{
    font-size:12px;
    color:blue;
-}
-
-.list{
-   
-}
-
-.table{
-   
-}
-
-.form{
-   
-}
+}*/
 
 /*--- component-------------------------------------------------------------------*/
-
-.header{
-   
-}
 
 .row{
    width:100%;
@@ -226,22 +333,66 @@ h1{
 
 
 /*--- media쿼리는 위로 갈 수 없음 (위에 것을 덮어쓰는 스타일이기 때문에)-ex.media all(모든 디바이스), screen, print 등--------------*/
+@media all and (min-width:640px){
+/*-----------header------------*/
+   #main-menu{
+      display:block;
+   }
+   
+   .more-vert-button{
+      display: none;
+   }
+      
 
-@media all and (min-width:480px) and (max-width:768px){
-	.more-vert-button{
-		display: none;
-	}
 
-	#main-menu{
-		display:block;
-	}	
-	
-	
-	.title{
+
+/*-----------lecture------------*/
+  .title{
+    border:1px solid red;
+    width: 100%;
+  }
+
+  .lecture .list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-left:10px;
+    padding-top: 10px;
+    width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .lecture .item{
+    flex-direction: column;
+    height:inherit;
+    width:180px;
+    padding:0px;
+    height:200px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+
+  .lecture .item .logo{
+    width:100%;
+  }
+
+   .title{
       font-size:30px;
       color:green;
    }
 
+   
+  .footer{
+   display: flex;
+   flex-direction: column;
+    }
+
+  .lecture .info .update{
+    margin-left: 0px;
+  }
+  
    .col-sm-1{
       width:16.66666666%;
    }
@@ -267,7 +418,24 @@ h1{
    }
 }
 
+@media all and (min-width:770px) and (max-width:960px){
+  .lecture .list{
+    width:770px; 
+  }
+}
+
+@media all and (min-width:960px){
+  .lecture .list{
+    width: 960px; 
+  }
+}
+
+
 @media all and (min-width:768px) and (max-width:1024px){
+    #main-menu{
+      display:block;
+   }
+   
    .title{
       font-size:40px;
       color:gray;
@@ -275,14 +443,13 @@ h1{
 }
 
 @media all and (min-width:1024px){
+   #main-menu{
+      display:block;
+   }
+   
+   
    .title{
       font-size:50px;
       color:orange;
    }
 }
-
-
-
-
-
-

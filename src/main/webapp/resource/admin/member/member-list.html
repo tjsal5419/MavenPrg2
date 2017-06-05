@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <link href="../css/style.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body>        
+        <main>
+            <h2>전체 회원 목록 : 총 2명</h2>
+            <div>
+                <h3>검색폼</h3>
+                <form method="get">
+                    <fieldset>
+                        <legend class="hidden">검색필드</legend>
+                        <label>검색범주</label>
+                        <select>
+                            <option>제목</option>
+                            <option>내용</option>
+                            <option>작성자</option>
+                        </select>
+                        <label class="hidden">검색어</label>
+                        <input type="text" />
+                        <input type="submit" value="검색" />
+                    </fieldset>
+                </form>
+            </div>
+            <div>
+                <h3>목록</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="">선택</th>
+                            <th class="">이름(아이디)</th>
+                            <th class="">멤버등급</th>
+                            <th class="">가입일</th>
+                            <th class="mobile">연락처</th>
+                            <th class="mobile">성별</th>
+                            <th class="mobile">상태</th>
+                            <th class="mobile">최종방문일</th>
+                        </tr>
+                    </thead>
+                    <tbody>                
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>뉴렉(<a href="">newlec</a>)</td>
+                            <td>학생</td>
+                            <td>2016-12-11</td>
+                            <td class="mobile">010-1211-2234</td>
+                            <td class="mobile">남성</td>
+                            <td class="mobile">활성</td>
+                            <td class="mobile">2016-10-10 12:34:010</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>뉴렉(<a href="">newlec</a>)</td>
+                            <td>학생</td>
+                            <td>2016-12-11</td>
+                            <td class="mobile">010-1211-2234</td>
+                            <td class="mobile">남성</td>
+                            <td class="mobile">활성</td>                     
+                            <td class="mobile">2016-10-10 12:34:010</td>
+                        </tr>
+                    </tbody>
+                </table>                
+            </div>            
+        </main>
+    </body>
+</html>

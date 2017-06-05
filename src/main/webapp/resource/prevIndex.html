@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<!-- <script>
+   window.addEventListener("load", function(e){
+      console.log("loaded");
+   });
+   
+   window.addEventListener("scroll", function(e){
+      console.log(document.scrollingElement.scrollTop);  //edge, 크롬 
+      //혹은 
+      //console.log(document.body.scrollTop);  //크롬,사파리,오페라
+      //console.log(document.documentElement.scrollTop);  //IE, edge, firefox
+      
+      if(document.scrollingElement.scrollTop>50){   
+         var header = document.querySelector("#header");
+         header.style.position="fixed";
+      }
+      if(document.scrollingElement.scrollTop<50){
+         var header = document.querySelector("#header");
+         header.style.position="";
+      }
+   });
+</script> -->
+<script>
+      window.addEventListener("load",function(){
+    	  	var visual = document.querySelector("#visual");
+            var banner = document.querySelector(".banner");
+            var prevButton = document.querySelector(".move-button .prev-button");
+            var nextButton = document.querySelector(".move-button .next-button");
+            var moreButton = document.querySelector(".more-vert-button");
+            var header = document.querySelector("#header");
+            var mainMenu = document.querySelector("#main-menu");
+            
+            var mainMenuUl = document.querySelector("#main-menu>ul");
+            
+
+            mainMenuUl.style.display="none";
+            mainMenu.style.display="block";
+            mainMenu.style.position="absolute";
+            mainMenu.style.left="0px";
+            mainMenu.style.top="50px";
+            mainMenu.style.height="0px";  
+            mainMenu.style.width="100%";
+            banner.style.left = "0%";
+
+            
+            prevButton.onclick = function(){
+                  var right = parseInt(banner.style.left)+100+"%";
+                  if(parseInt(banner.style.left)>=0){
+                        alert("첫번째 페이지입니다.");          
+                  }
+            	/*transition은 요소의 위치 초기 값을 꼭 설정해줘야함. */
+                  else
+                      banner.style.left = right;
+            };
+            
+            nextButton.onclick = function(){
+            	var left = parseInt(banner.style.left)-100+"%";
+                  if(parseInt(banner.style.left)<=-200){
+                        var li = banner.querySelector("li:first-child");
+                        
+                        //clone 하지 않는 경우 1->2->3 이 2->3->1 로 변하게 되므로 페이지를 넘기면 빈 화면이 나온다.
+                        // 원하는 것은 1->2->3 에서 1->2->3->1 이므로 clone을 해준다.
+                        // clone 해도 너비가 깨지게 되는데, banner의 넓이가 300%인 상태에서
+                        //100%의 li를 4개 추가했기 때문이다.
+                        // 이런 경우, 마지막 페이지에서 또 추가할 떄 banner는 총 400%로 주면 된다.
+                        var clone = li.cloneNode();
+                        banner.appendChild(clone);
+                        banner.style.width ="400%";
+                        banner.style.left = left;
+
+                        setTimeout(function(){
+                              banner.style.width ="300%"; 
+                              banner.removeChild(li);
+                        },500);
+                        
+
+                  }
+            	/*transition은 요소의 위치 초기 값을 꼭 설정해줘야함. */
+                  else
+                      banner.style.left = left;
+
+
+            };
+            
+            var moreButtonClosed = true;
+            //Mobile Ver, 클릭 시 비쥬얼 위에 바로 표현하게 한다.
+            moreButton.onclick = function(){
+                  if(moreButtonClosed){
+                        mainMenu.style.height="30px";
+                        visual.style.marginTop = "30px";
+                        //setTimeout
+                        // 시한폭탄 처럼 시작 시간을 늦춰준다.
+                        setTimeout(function(){
+                        mainMenuUl.style.display="flex";
+                        },500);
+
+                        moreButtonClosed=false;
+                  }
+
+                  else if(!moreButtonClosed){
+                        visual.style.marginTop = "0px";
+                        mainMenu.style.height="0px";
+                        mainMenuUl.style.display="none";
+                        moreButtonClosed=true;
+
+                  }
+
+            };
+            var burgerButton = document.querySelector(".hamburger-button");
+            var sideMenu = document.querySelector(".side-menu");
+            sideMenu.style.left = "-69%"; // 초기 값을 줘야한다.
+
+            burgerButton.onclick = function(){
+                  if(parseInt(sideMenu.style.left)==-69)
+                        sideMenu.style.left= "0%";
+                  else if(parseInt(sideMenu.style.left)==70)
+                        sideMenu.style.left= "-69%";
+            };
+
+      });
+
+</script>
+</head>
+<body>
+
+	<div id="header">
+      <div class="hamburger-button"><img src="images/ic_menu_black_24dp_1x.png" /></div>
+         
+      <div class="content-container">      
+         <h1><a><img src="images/logo-sm.png" /></a></h1>      
+         <section>
+            <nav id="main-menu">
+               <h1 class="hidden">메인메뉴</h1>
+               <ul>
+                  <li><a href="">학습가이드</a></li>
+                  <li><a href="">뉴렉과정</a></li>
+                  <li><a href="">강좌선택</a></li>
+               </ul>
+            </nav>
+         </section>
+      </div>
+      <div class="side-menu">
+          <nav id="account-menu" class="hr-menu">
+               <h1 class="hidden">계정메뉴</h1>
+               <ul>
+                  <li><a href="../index.html">HOME</a></li>
+                  <li><a href="../account/login.html">로그인</a></li>
+                  <li><a href="../join.html">회원가입</a></li>
+               </ul>
+            </nav>
+
+            <nav id="member-menu" class="hr-menu">
+               <h1 class="hidden">회원메뉴</h1>
+               <ul>
+                  <li><input type="button" value="마이페이지" /></li>
+                  <li><input type="button" value="고객 센터" /></li>
+               </ul>
+            </nav>  
+      </div>      
+
+      <div class=""><img src="images/ic_search_black_24dp_1x.png" /></div>
+      <div class="more-vert-button"><img src="images/ic_more_vert_black_24dp_1x.png" /></div>
+      
+   </div>
+   
+   <div id="visual">
+      <h2 class="hidden">신규 강좌목록</h2>
+      <ul class="banner">
+         <li style='background:url("images/lecture/banner-javascript180.png") no-repeat center; background-size: cover;'>
+         	<a href=""></a>
+         </li>
+
+         <li style='background:url("images/lecture/banner-oracle180.png") no-repeat center; background-size: cover;'>
+         	<a href=""></a>
+         </li>
+         <li style='background:url("images/lecture/banner-spring180.png") no-repeat center; background-size: cover;'>
+         	<a href=""></a>
+         </li>
+     
+      </ul>
+      
+      <ul class="move-button">
+      	<li class="prev-button">이전</li>
+      	<li class="next-button">다음</li>
+      </ul>
+      
+   </div>
+   <!-- <script>
+      window.addEventListener("load", function(e){
+         var mainCategory = document.querySelector("#main-category");
+         var subCategory = document.querySelector("#sub-category");
+         mainCategory.onchange=function(event){
+            //alert(mainCategory.value); value값을 가져와서 그 값에 해당하는 중분류 갖고오기
+            //alert(event.target.dataset.title) 콤보박스를 쓰지 않았을떄
+            var id = mainCategory.value;
+            var request = new XMLHttpRequest();
+            request.onload = function(event){
+
+               //alert(request.responseText);
+               var list = JSON.parse(request.responseText);
+               //alert(list[0].title);
+               
+               //콤보박스 모든 항목 지우기
+               subCategory.innerHTML="";
+               
+               //기본선택옵션추가하기
+               var option = document.createElement("option");
+               option.value=0;
+               option.textContent="분류선택";
+               
+               subCategory.appendChild(option);
+               
+               //검색옵션추가하기
+               for(var i=0; i<list.length;i++){
+                  option = document.createElement("option");
+                  option.value=list[i].id;
+                  option.textContent=list[i].title;
+                  subCategory.appendChild(option);
+               }
+            };
+            request.open("GET","/MavenPrj/category?id="+id);
+            //데이터 가져오는
+            request.send(null);
+         };
+      });
+   </script> -->
+   <div id="notice">
+      [자세히]
+      <!-- <div>
+         대분류
+         <select id="main-category">
+            <option data-id="0" data-title="ㅁㅁㅁ" value="0">분류선택</option>
+            <option data-id="1" data-title="ㅂㅂㅂ"value="1">서울</option>
+            <option data-id="2" data-title="ㅈㅈ"value="2">경기</option>
+            <option data-id="3" data-title="ㄷㄷㄷ" value="3">강원</option>
+            <option data-id="4" data-title="ㄱㄱㄱ"value="4">춘천</option>
+            <option data-id="5" data-title="ㅅㅅ"value="5">제주</option>
+         </select>
+         중분류
+         <select id="sub-category">
+            <option>분류선택</option>
+         </select>
+      </div> -->
+   </div>
+   <main class="lectures">
+      <ul class="list">
+        <li class="item event">
+            <div class="logo">
+                  <img class="img" src="images/lecture/img-javascript-sm.png"/>
+            </div>
+            <div class="lecture-list-detail">
+               <div class="info">
+                     <span class="title">스프링 MVC 웹 프로그래밍</span>
+               </div>
+               <div class="price">
+                     <span class="normal">90000원</span> 
+                     <span class="event">10000원</span>
+               </div>
+               <div class="footer">
+                     <span class="wirter">newlec</span> 
+                     <span class="up-date">수정일:2017-07-10</span>
+              </div>
+            </div>
+            <div></div>
+        </li>
+
+        <li class="item normal">
+            <div class="logo">
+                  <img class="img" src="images/lecture/img-oracle-sm.png"/>
+            </div>
+            <div class="lecture-list-detail">
+               <div>
+                     <span>스프링 MVC 웹 프로그래밍</span>
+               </div>
+               <div class="price">
+                     <span class="normal">90000원</span> 
+                     <span class="event">10000원</span>
+               </div>
+               <div>
+                     <span class="wirter">newlec</span> 
+                     <span class="up-date">수정일:2017-07-10</span>
+              </div>
+            </div>
+        </li>
+
+         <li class="item update">
+            <div class="logo">
+                  <img  class="img" src="images/lecture/img-spring-sm.png"/>
+            </div>
+            <div class="lecture-list-detail">
+               <div>
+                     <span>스프링 MVC 웹 프로그래밍</span>
+               </div>
+               <div class="price">
+                     <span class="normal">90000원</span> 
+                     <span class="event">10000원</span>
+               </div>
+               <div>
+                     <span class="wirter">newlec</span> 
+                     <span class="up-date">수정일:2017-07-10</span>
+              </div>
+            </div>
+            <div></div>
+        </li>
+
+      </ul>
+   </main>
+   <footer id="footer">
+      Copyright@newlecture.com
+   </footer>
+</body>
+</html>

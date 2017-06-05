@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="/MavenPrj/resource/css/style.css" type="text/css" rel="stylesheet" />
-<!-- <script>
-   window.addEventListener("load", function(e){
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="css/style.css" type="text/css" rel="stylesheet" />
+	<script>
+		/* window.addEventListener("load", function(e){
       console.log("loaded");
    });
    
@@ -24,75 +24,148 @@
          var header = document.querySelector("#header");
          header.style.position="";
       }
-   });
-</script> -->
-<script>
-      window.addEventListener("load",function(){
-    	  	var visual = document.querySelector("visual");
-            var banner = document.querySelector(".banner");
-            var prevButton = document.querySelector(".move-button .prev-button");
-            var nextButton = document.querySelector(".move-button .next-button");
+   }); */
 
-            prevButton.onclick = function(){
+		window.addEventListener("load", function () {
+			var banner = document.querySelector(".banner");
+			var prevButton = document.querySelector(".mov-button .prev-button");
+			var nextButton = document.querySelector(".mov-button .next-button");
+			var moreVertButton = document.querySelector(".more-vert-button");
+			var visual = document.querySelector("#visual");
+			var mainMenu = document.querySelector("#main-menu");
+			var ul = document.querySelector("#main-menu>ul");
+			var li = document.querySelector("li");
+			var contentContainer = document.querySelector(".content-container");
+			var hamburgerButton = document.querySelector(".hamburger-button");
+			var sideMenu = document.querySelector(".side-menu");
+			var sideScreen = document.createElement("div");
 
-            };
-            
-            nextButton.onclick = function(){
-            	//var left = String(Number(banner.style.left)+Number(visual.style.left)/3); 
-            	/* transition은 요소의 위치 초기 값을 꼭 설정해줘야함. */
-            	alert(banner.style.left);
-                //banner.style.left = left;
-            };
-      });
+			banner.style.left = "0%";
+			sideScreen.style.width = "100%";
+			sideScreen.style.height = "100%";
+			sideScreen.style.position = "fixed";
+			sideScreen.style.background = "#000";
+			sideScreen.style.top = "0px";
+			sideScreen.style.left = "0px";
+			sideScreen.style.zIndex = 101;
+			sideScreen.style.opacity = 0.5;
+			sideScreen.style.display = "none";
 
-</script>
+			sideMenu.parentElement.insertBefore(sideScreen, sideMenu);
+
+			prevButton.onclick = function () {
+				banner.style.left = parseInt(banner.style.left) + 100 + "%";
+			};
+
+			nextButton.onclick = function () {
+				if (parseInt(banner.style.left) <= -200) {
+					var li = banner.querySelector("li:first-child");
+					banner.style.width = "400%";
+					var clone = li.cloneNode();
+					banner.appendChild(clone);
+				}
+				banner.style.left = parseInt(banner.style.left) - 100 + "%";
+			};
+
+			moreVertButton.onclick = function () {
+				if (ul.style.display == "none") {
+					mainMenu.style.background = "#fff";
+					visual.style.marginTop = "30px";
+					visual.style.background = "#fff";
+					ul.style.lineHeight = "10px";
+					ul.style.display = "flex";
+					ul.style.alignItems = ("center");
+					mainMenu.style.justifyContent = ("center");
+					// li.style.display="inline-block";
+					// li.style.textAlign="center";
+					setTimeout(function () {
+						mainMenu.style.display = "flex";
+						mainMenu.style.position = "absolute";
+						mainMenu.style.width = "100%";
+						mainMenu.style.left = "0px";
+						mainMenu.style.top = "50px";
+						mainMenu.style.height = "30px";
+					}, 500);
+				}
+
+				else {
+					ul.style.display = "none";
+					visual.style.marginTop = "0px";
+					mainMenu.style.background = "";
+				}
+			}			
+
+			hamburgerButton.onclick = function () {
+				sideScreen.style.display = "";
+				sideMenu.style.left = "0%";
+			}
+			sideScreen.onclick = function() {
+				sideScreen.style.display = "none";
+				sideMenu.style.left = "-70%";
+			}
+		});
+	</script>
 </head>
+
 <body>
 
 	<div id="header">
-      <div><img src="/MavenPrj/resource/images/ic_menu_black_24dp_1x.png" /></div>
-         
-      <div class="content-container">      
-         <h1><a><img src="/MavenPrj/resource/images/logo-sm.png" /></a></h1>      
-         <section>
-            <nav id="main-menu">
-               <h1 class="hidden">메인메뉴</h1>
-               <ul>
-                  <li><a href="">학습가이드</a></li>
-                  <li><a href="">뉴렉과정</a></li>
-                  <li><a href="">강좌선택</a></li>
-               </ul>
-            </nav>
-         </section>
-      </div>
-         
-      <div class=""><img src="/MavenPrj/resource/images/ic_search_black_24dp_1x.png" /></div>
-      <div class="more-vert-button"><img src="/MavenPrj/resource/images/ic_more_vert_black_24dp_1x.png" /></div>
-      
-   </div>
-   
-   <div id="visual">
-      <h2 class="hidden">신규 강좌목록</h2>
-      <ul class="banner">
-         <li style='background:url("/MavenPrj/resource/images/lecture/banner-javascript180.png") no-repeat center; background-size: cover;'>
-         	<a href=""></a>
-         </li>
+		<div class="hamburger-button"><img src="images/ic_menu_black_24dp_1x.png" /></div>
+		<div class="content-container">
+			<h1><a><img src="images/logo-sm.png" /></a></h1>
+			<section>
+				<nav id="main-menu">
+					<h1 class="hidden">메인메뉴</h1>
+					<ul class="ul">
+						<!-- ul,ol,dl -->
+						<li><a href="">학습가이드</a></li>
+						<li><a href="">뉴렉과정</a></li>
+						<li><a href="">강좌선택</a></li>
+					</ul>
+				</nav>
+				<div class="side-menu">
+					<nav id="account-menu" class="hr-menu">
+						<h1 class="hidden">계정메뉴</h1>
+						<ul>
+							<li><a href="../index.html">HOME</a></li>
+							<li><a href="../account/login.html">로그인</a></li>
+							<li><a href="../join.html">회원가입</a></li>
+						</ul>
+					</nav>
+					<nav id="member-menu" class="hr-menu">
+						<h1 class="hidden">회원메뉴</h1>
+						<ul>
+							<li><input type="button" value="마이페이지" /></li>
+							<li><input type="button" value="고객 센터" /></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+		</div>
+		<div><img src="images/ic_search_black_24dp_1x.png" /></div>
+		<div class="more-vert-button"><img src="images/ic_more_vert_black_24dp_1x.png" /></div>
+	</div>
 
-         <li style='background:url("/MavenPrj/resource/images/lecture/banner-oracle180.png") no-repeat center; background-size: cover;'>
-         	<a href=""></a>
-         </li>
-         <li style='background:url("/MavenPrj/resource/images/lecture/banner-spring180.png") no-repeat center; background-size: cover;'>
-         	<a href=""></a>
-         </li>
-      </ul>
-      
-      <ul class="move-button">
-      	<li class="prev-button">이전</li>
-      	<li class="next-button">다음</li>
-      </ul>
-      
-   </div>
-   <!-- <script>
+	<div id="visual">
+		<h2 class="hidden">신규 강좌목록</h2>
+		<ul class="banner">
+			<li style='background: url("images/lecture/banner-spring180.png") no-repeat center; background-size: cover;'>
+				<a href=""></a>
+			</li>
+			<li style='background: url("images/lecture/banner-javascript180.png") no-repeat center; background-size: cover;'>
+				<a href=""></a>
+			</li>
+			<li style='background: url("images/lecture/banner-oracle180.png") no-repeat center; background-size: cover;'>
+				<a href=""></a>
+			</li>
+		</ul>
+		<ul class="mov-button">
+			<li class="prev-button">이전</li>
+			<li class="next-button">다음</li>
+		</ul>
+		<div></div>
+	</div>
+	<!-- <script>
       window.addEventListener("load", function(e){
          var mainCategory = document.querySelector("#main-category");
          var subCategory = document.querySelector("#sub-category");
@@ -131,9 +204,9 @@
          };
       });
    </script> -->
-   <div id="notice">
-      [자세히]
-      <!-- <div>
+	<div id="notice">
+		[자세히]
+		<!-- <div>
          대분류
          <select id="main-category">
             <option data-id="0" data-title="ㅁㅁㅁ" value="0">분류선택</option>
@@ -148,12 +221,193 @@
             <option>분류선택</option>
          </select>
       </div> -->
-   </div>
-   <main id="lectures">
-      강좌목록
-   </main>
-   <footer id="footer">
-      Copyright@newlecture.com
-   </footer>
+	</div>
+	<main class="lecture">
+		강좌목록
+		<ul class="list">
+			<li class="item event">
+				<div class="logo">
+					<picture class="picture">
+						<!--source 태그는미디어쿼리 추가 가능-->
+						<source media="(min-width:640px)"
+							srcset="images/lecture/spring-di.png"/> 
+			
+						<!--default 이미지-->
+						<img class="img" src="images/lecture/img-oracle-sm.png" />
+					</picture>
+				</div>
+				<div class="info">
+					<div class="header">
+						<span class="title">스프링 MVC 웹 프로그래밍</span>
+					</div>
+					<div class="price">
+						<span class="normal deprecated"><span>99000</span>원</span>
+						<span class="event"><span class = "color-red">10000</span>원</span>
+					</div>
+					<div class="footer">
+						<span class="wirter">newlec</span>
+						<span class="update">수정일 : 2017-01-10</span>
+					</div>
+				</div>
+			</li>
+			<li class="item normal">
+				<div class="logo">
+					<picture class="picture" >
+						<!--source 태그는미디어쿼리 추가 가능-->
+						<source media="(min-width:640px)"
+							srcset="images/lecture/spring-di.png"/> 
+			
+						<!--default 이미지-->
+						<img class="img" src="images/lecture/img-oracle-sm.png" />
+					</picture>
+				</div>
+				<div class="info">
+					<div class="header">
+						<span class="title">스프링 MVC 웹 프로그래밍</span>
+					</div>
+					<div class="price">
+						<span class="normal deprecated"><span>99000</span>원</span>
+						<span class="event"><span class = "color-red">10000</span>원</span>
+					</div>
+					<div class="footer">
+						<span class="wirter">newlec</span>
+						<span class="update">수정일 : 2017-01-10</span>
+					</div>
+				</div>
+			</li>
+			<li class="item new">
+				<div class="logo">
+					<picture class="picture">
+						<!--source 태그는미디어쿼리 추가 가능-->
+						<source media="(min-width:640px)"
+							srcset="images/lecture/spring-di.png"/> 
+			
+						<!--default 이미지-->
+						<img class="img" src="images/lecture/img-oracle-sm.png" />
+					</picture>
+				</div>
+				<div class="info">
+					<div class="header">
+						<span class="title">스프링 MVC 웹 프로그래밍</span>
+					</div>
+					<div class="price">
+						<span class="normal deprecated"><span>99000</span>원</span>
+						<span class="event"><span class = "color-red">10000</span>원</span>
+					</div>
+					<div class="footer">
+						<span class="wirter">newlec</span>
+						<span class="update">수정일 : 2017-01-10</span>
+					</div>
+				</div>
+			</li>
+
+			<li class="item new">
+				<div class="logo">
+					<picture class="picture">
+						<!--source 태그는미디어쿼리 추가 가능-->
+						<source media="(min-width:640px)"
+							srcset="images/lecture/spring-di.png"/> 
+			
+						<!--default 이미지-->
+						<img class="img" src="images/lecture/img-oracle-sm.png" />
+					</picture>
+				</div>
+				<div class="info">
+					<div class="header">
+						<span class="title">스프링 MVC 웹 프로그래밍</span>
+					</div>
+					<div class="price">
+						<span class="normal deprecated"><span>99000</span>원</span>
+						<span class="event"><span class = "color-red">10000</span>원</span>
+					</div>
+					<div class="footer">
+						<span class="wirter">newlec</span>
+						<span class="update">수정일 : 2017-01-10</span>
+					</div>
+				</div>
+			</li>
+
+			<li class="item new">
+				<div class="logo">
+					<picture class="picture">
+						<!--source 태그는미디어쿼리 추가 가능-->
+						<source media="(min-width:640px)"
+							srcset="images/lecture/spring-di.png"/> 
+			
+						<!--default 이미지-->
+						<img class="img" src="images/lecture/img-oracle-sm.png" />
+					</picture>
+				</div>
+				<div class="info">
+					<div class="header">
+						<span class="title">스프링 MVC 웹 프로그래밍</span>
+					</div>
+					<div class="price">
+						<span class="normal deprecated"><span>99000</span>원</span>
+						<span class="event"><span class = "color-red">10000</span>원</span>
+					</div>
+					<div class="footer">
+						<span class="wirter">newlec</span>
+						<span class="update">수정일 : 2017-01-10</span>
+					</div>
+				</div>
+			</li>
+
+			<li class="item new">
+				<div class="logo">
+					<picture class="picture">
+						<!--source 태그는미디어쿼리 추가 가능-->
+						<source media="(min-width:640px)"
+							srcset="images/lecture/spring-di.png"/> 
+			
+						<!--default 이미지-->
+						<img class="img" src="images/lecture/img-oracle-sm.png" />
+					</picture>
+				</div>
+				<div class="info">
+					<div class="header">
+						<span class="title">스프링 MVC 웹 프로그래밍</span>
+					</div>
+					<div class="price">
+						<span class="normal deprecated"><span>99000</span>원</span>
+						<span class="event"><span class = "color-red">10000</span>원</span>
+					</div>
+					<div class="footer">
+						<span class="wirter">newlec</span>
+						<span class="update">수정일 : 2017-01-10</span>
+					</div>
+				</div>
+			</li>
+
+			<li class="item new">
+				<div class="logo">
+					<picture class="picture">
+						<!--source 태그는미디어쿼리 추가 가능-->
+						<source media="(min-width:640px)"
+							srcset="images/lecture/spring-di.png"/> 
+			
+						<!--default 이미지-->
+						<img class="img" src="images/lecture/img-oracle-sm.png" />
+					</picture>
+				</div>
+				<div class="info">
+					<div class="header">
+						<span class="title">스프링 MVC 웹 프로그래밍</span>
+					</div>
+					<div class="price">
+						<span class="normal deprecated"><span>99000</span>원</span>
+						<span class="event"><span class = "color-red">10000</span>원</span>
+					</div>
+					<div class="footer">
+						<span class="wirter">newlec</span>
+						<span class="update">수정일 : 2017-01-10</span>
+					</div>
+				</div>
+			</li>			
+		</ul>
+	</main>
+	<footer id="footer">
+		Copyright@newlecture.com
+	</footer>
 </body>
 </html>
