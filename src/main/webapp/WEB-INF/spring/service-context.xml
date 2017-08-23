@@ -16,7 +16,15 @@
 		<property name="username" value="sist" />
 		<property name="password" value="sclass" />
 	</bean>
-
+	
+<!-- 	<bean name="oracledataSource"
+      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+      <property name="url" value="jdbc:oracle:thin:@211.238.142.251:1521:orcl" />
+      <property name="username" value="c##sist" />
+      <property name="password" value="dclass" />
+   </bean> -->
+	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
@@ -27,19 +35,52 @@
 			value="classpath:com/newlecture/web/dao/mybatis/mapper/*.xml" />
 	</bean>
 
-	<bean class="com.newlecture.web.dao.mybatis.MyBatisLanguageDao" />	
-	<bean class="com.newlecture.web.dao.mybatis.MyBatisLectureDao" />
-	<bean class="com.newlecture.web.dao.mybatis.MyBatisLectureLanguageDao" />
-	<bean class="com.newlecture.web.dao.mybatis.MyBatisLecturePlatformDao" />
-	<bean class="com.newlecture.web.dao.mybatis.MyBatisLevelDao" />
-	<bean class="com.newlecture.web.dao.mybatis.MyBatisMemberDao" />
-	<bean class="com.newlecture.web.dao.mybatis.MyBatisMemberRoleDao" />
-	<bean class="com.newlecture.web.dao.mybatis.MyBatisNoticeDao" />
-	<bean class="com.newlecture.web.dao.mybatis.MyBatisNoticeFileDao" />
-	<bean class="com.newlecture.web.dao.mybatis.MyBatisPlatformDao" />
-	<bean class="com.newlecture.web.dao.mybatis.MyBatisUnitDao" />
-	<bean class="com.newlecture.web.dao.mybatis.MyBatisChapterDao" />
-	
+   		<bean class="com.newlecture.web.dao.mybatis.MyBatisLanguageDao" />   
+   		<bean class="com.newlecture.web.dao.mybatis.MyBatisLectureDao" />
+   		<bean class="com.newlecture.web.dao.mybatis.MyBatisLectureLanguageDao" />
+	   <bean class="com.newlecture.web.dao.mybatis.MyBatisLecturePlatformDao" />
+	   <bean class="com.newlecture.web.dao.mybatis.MyBatisLevelDao" />
+	   <!-- <bean class="com.newlecture.web.dao.mybatis.MyBatisMemberDao" /> -->
+	   <bean class="com.newlecture.web.dao.mybatis.MyBatisMemberRoleDao" />
+	   <bean class="com.newlecture.web.dao.mybatis.MyBatisNoticeDao" />
+	   <bean class="com.newlecture.web.dao.mybatis.MyBatisNoticeFileDao" />
+	   <bean class="com.newlecture.web.dao.mybatis.MyBatisPlatformDao" />   
+	   <bean class="com.newlecture.web.dao.mybatis.MyBatisChapterDao" />
+	   <bean class="com.newlecture.web.dao.mybatis.MyBatisUnitDao" />   
+	   
+		   
+<!-- 	   <bean name="springMemberDao" class="com.newlecture.web.dao.spring.SpringMemberDao" >
+	      <property name="dataSource" ref="oracledataSource"/>
+	   </bean>
+	   
+	   <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	      <property name="dataSource" ref="oracledataSource"/>
+	   </bean>
+	   
+	   <bean class="org.springframework.transaction.support.TransactionTemplate">
+	      <property name="transactionManager" ref="transactionManager" />
+	   </bean>
+ -->
+	   <!-- <bean name="transactionInterceptor" 
+	   	class="org.springframework.transaction.interceptor.support.TransactionTemplate">
+	   		<property name="propertyManager" ref="transactionManager"/>
+	   		<property name="transactionAttributes">
+	   			<props>
+	   				<prop key="getList">PROPAGATION_REQUIRED</prop>
+	   			</props>
+	   		</property>
+	   			
+	   </bean> -->
+	   
+<!-- 	  <bean name="memberDao" class="org.springframework.aop.ProxyFactoryBean">
+			<property name="target" ref="springMemberDao"></property>
+			<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+			</list>
+			</property>
+	  </bean>
+    -->
 	<context:annotation-config /><!-- Autowired가 필요한 곳에서 설정함 -->
 	<bean class="com.newlecture.web.service.AdminService" />
 	<bean class="com.newlecture.web.service.TeacherService" />
